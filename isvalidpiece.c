@@ -12,7 +12,14 @@ int isvalidpiece(char *buf)
 	while (buf[i] != '\0')
 	{
 		while (buf[i] != '#' && hashes == 0)
+		{
 			i++;
+			if (buf[i] == '\0')
+			{
+				printf("ERROR: empty");
+				return (-1);
+			}
+		}
 		if (buf[i] == '#') 
 		{	
 			//printf("buf[%i]: hash detected \n", i);

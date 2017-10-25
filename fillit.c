@@ -1,3 +1,4 @@
+/*
 void fillit(t_list **alst)
 {
 	// 1. determine smallest possible square size
@@ -8,3 +9,5 @@ void fillit(t_list **alst)
 	// 4. print the square
 
 }
+
+*/
