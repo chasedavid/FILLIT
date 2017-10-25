@@ -9,4 +9,4 @@ WIP - need to check for empty rows and columns, shift tetrimino to upper left, a
 WIP - checkbufchar does not validate correctly
 
 10.25
--CD: We can maybe implement a counter, create a function that interates through to make sure there are no invalid inputs in isvalid piece. also repush so I can pull the working file. ;)
+- CD: We can maybe implement a counter, create a function that interates through to make sure there are no invalid inputs in isvalid piece. also repush so I can pull the working file. ;)

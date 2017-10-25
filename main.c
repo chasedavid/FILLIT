@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 		ft_putnbr(ret);
 		ft_putchar('\n');
 		ft_putstr(buf);
-		check_buf(buf);
+//		check_buf(buf);
 		if (isvalidpiece(buf) == 1)
 			ft_lstappend(&linked_list, ft_lstnew(buf,22)); 
 		ft_putchar('\n');
