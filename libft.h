@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 01:43:41 by aho               #+#    #+#             */
-/*   Updated: 2017/10/24 00:06:16 by aho              ###   ########.fr       */
+/*   Updated: 2017/10/24 16:44:35 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,6 @@ void ft_printlist(t_list **alst);
 void    ft_lstappend(t_list **alst, t_list *new);
 int check_buf(char *buf);
 int checkbufchar(char *buf);
-int isvalidtetri(char *buf);
+int isvalidpiece(char *buf);
 
 #endif
