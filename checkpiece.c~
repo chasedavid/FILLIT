@@ -15,10 +15,11 @@ void checkpiece(t_list *link, char *grid, int alpha)
 	if (link->content != 0)
 	{
 		//
-		printf("------------- tettrim() function -------------\n");
+	printf("------------- tettrim() function -------------\n");
 		tettrim(link->content);
 
 
+//	piece = tertrim(link);
 
 	//get information from link being passed in
 

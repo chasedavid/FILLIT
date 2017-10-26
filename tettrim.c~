@@ -1,22 +1,6 @@
 #include "libft.h"
 #include <stdio.h>
 
-
-void checktetcol(char *row)
-{
-	int i; 
-
-	i = 0; 
-	while (i < 4)
-	{
-		if ()
-		{
-		}			
-	}
-
-}
-
-
 void tettrim(char *str)
 {
 	char **tet2d;
