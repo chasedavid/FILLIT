@@ -1,6 +1,6 @@
 # FILLIT
 
-     Updated: 2017/10/25 19:05:01 by aho              ###   ########.fr         
+     Updated: 2017/10/25 20:45:31 by aho              ###   ########.fr         
 
 TASKS
 
@@ -13,4 +13,23 @@ TASKS
 NOTES
 
 10.25
-- CD: We can maybe implement a counter, create a function that interates through to make sure there are no invalid inputs in isvalid piece. also repush so I can pull the working file. ;)
+- CD: We can maybe implement a counter, create a function that iterates through to make sure there are no invalid inputs in isvalid piece. also repush so I can pull the working file. ;)
+
+
+DOCUMENTATION
+
+1. main()
+
+- reads text file 
+
+- calls `isvalidpiece(buf)` and checks if piece is valid 
+
+- `ft_lstappend(&linked_list, ft_lstnew(buf,22))` - stores valid piece into linked list
+
+- should call `fillit(linkedlist)` to solve
+
+2. fillit()
+
+- `grid` variable created and initialized as smallest possible square
+
+- `placepiece(current, grid, counter)` 
