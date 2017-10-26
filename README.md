@@ -1,12 +1,14 @@
 # FILLIT
 
-     Updated: 2017/10/25 20:48:40 by aho              ###   ########.fr         
+     Updated: 2017/10/26 02:19:33 by aho              ###   ########.fr         
 
 ## TASKS
 
 - [X] [AH] Ability to read text file and store pieces into *linked_list
 
-- [ ] [AH] edit lstappend() to assign a char ('A') to each tetrimino *10/25 Current Task*
+- [X] [AH] Edit lstnew() and t_list struct to assign a char ('A') to each tetrimino *Completed 10/25*
+
+- [ ] [AH] Edit checkpiece() function to place piece on grid  *10/25 Current Task*
 
 - [ ] [CD] lstpop() function - this will pop first link (piece) in list and append to end so that algorithm can try fitting pieces by placing the next piece in the top left corner
 
@@ -32,4 +34,7 @@
 
 - `grid` variable created and initialized as smallest possible square
 
-- `placepiece(current, grid, counter)` 
+### 3. checkpiece()
+
+- this function is where the magic will be happening
+- AH: currently working on placing pieces into the grid

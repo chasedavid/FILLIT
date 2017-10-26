@@ -1,14 +1,25 @@
 #include "libft.h" 
-
+#include <stdio.h>
 //this function checks if the data in link passed in can fit into the grid
 
-void checkpiece(t_list *link, char *grid, char c)
-{
-	char counter[1];
-	char *piece;
 
-	piece = trimpiece(link);
-	counter = 'A'; 
+void checkpiece(t_list *link, char *grid, int alpha)
+{
+
+	printf("------------- checkpiece() function -------------\n");
+	printf("alpha: %c \n", alpha);
+	printf("grid:\n%s \n", grid);
+	printf("tetrimino piece:\n%s \n", link->content);
+
+
+	if (link->content != 0)
+	{
+		//
+	printf("------------- tettrim() function -------------\n");
+		tettrim(link->content);
+
+
+//	piece = tertrim(link);
 
 	//get information from link being passed in
 
@@ -23,6 +34,7 @@ void checkpiece(t_list *link, char *grid, char c)
 
 
 
-
+	}
 
 }
+

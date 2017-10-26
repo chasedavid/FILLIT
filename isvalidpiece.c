@@ -46,7 +46,7 @@ int isvalidpiece(char *buf)
 	}
 
 	ft_putstr("\n--- isvalidpiece result: buf contains valid piece --- \n");
-	ft_putstr(buf);
+//	ft_putstr(buf);
 			
 	return (1); 
 }
