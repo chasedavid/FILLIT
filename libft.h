@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 01:43:41 by aho               #+#    #+#             */
-/*   Updated: 2017/10/24 16:44:35 by aho              ###   ########.fr       */
+/*   Updated: 2017/10/26 02:13:26 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,19 +81,26 @@ typedef struct		s_list
 {
 	void			*content;
 	size_t			content_size;
+	int 			alpha;
 	struct s_list	*prev;
 	struct s_list	*next;
 }					t_list;
-t_list				*ft_lstnew(void const *content, size_t content_size);
+t_list				*ft_lstnew(void const *content, size_t content_size, int alpha);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void(*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
-void				ft_lstiter(t_list *lst, void(*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+
 void ft_printlist(t_list **alst);
 void    ft_lstappend(t_list **alst, t_list *new);
 int check_buf(char *buf);
 int checkbufchar(char *buf);
 int isvalidpiece(char *buf);
+void fillit(t_list **alst);
+void checkpiece(t_list *link, char *grid, int alpha);
+
+void    ft_lstiter(t_list *lst, char *str, void (*f)(t_list *elem, char *str, int c));
+
+void tettrim(char *str);
 
 #endif
