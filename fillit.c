@@ -10,7 +10,7 @@ char *makemap(int n)
 	i = 0;
 	maplen = (n * n) + n + 1;
 	map = ft_memalloc(maplen);
-	map[maplength] = '\0';
+	map[maplen] = '\0';
 	while (i < (maplen - 1))
 	{
 		if (((i + 1) % (n + 1)) == 0 ) 
@@ -21,10 +21,6 @@ char *makemap(int n)
 	}
 	return (map); 
 }
-
-
-
-
 
 
 void fillit(t_list **alst)
