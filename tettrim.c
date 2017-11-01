@@ -1,6 +1,7 @@
 #include "libft.h"
 #include <stdio.h>
 
+
 int checktetcol(char **array)
 {
 	int i; 
@@ -11,14 +12,16 @@ int checktetcol(char **array)
 	j = 0;
 	counter = 0;
 	while (i < 4)
-	{
-		if (array[i][j] == '.') 
+	  {
+	    //returns the column number if all rows checked have '.'
+	  	if (array[i][j] == '.') 
 		{
 			counter++;
 			if (counter == 4)
 				return (j);
 			i++;
 		}
+		// if not '.', then go to next column and reset the row & counter
 		else if (array[i][j] != '.') 
 		{
 			j++;
@@ -58,10 +61,85 @@ char **tettrimcol(char **array, int index)
 	i = 0; 
 	while (i < 4) 
 	{
-		array[i] = strtrimi(array[i], index);
+	  //store new trimmed row into the array
+	  	array[i] = strtrimi(array[i], index);
 		i++;
 	}
 	return (array);
+}
+
+int checktetrow(char **array)
+{
+	  int i;
+	  int j;
+	  int hashinrow;
+	  int counter;
+
+	  i = 0;
+	  j = 0;
+	  hashinrow = 0;
+
+	  while (i < 4)
+	  {
+	    while (array[i][j] = '.')
+	      {
+		j++;
+		if (j == 4)
+		  return (i);
+	      }
+	    if (array[i][j] != '.')
+	      {
+		hashinrow++;
+		i++;
+		j = 0;
+	      }
+	    if (j == 4 && hashinrow == 0)
+	      {
+		trimarray;
+		gotonextrow;
+	      }
+	    if (j == 4 && hashinrow > 0)
+	        return (array);
+	
+
+	    
+	    if (i == 4)
+	      return (-1);
+	  }
+}
+
+
+char **tettrimrow(char **array, int row_index)
+{
+  int i;
+  i = 0; 
+  while (i < 3)
+    {
+      array[i]
+    }
+
+
+
+
+
+
+  
+  //check if row contains all '.'
+  //if row is before any hashes, move remaining rows up one row
+  //check row again and repeat
+  //if hash is found go to next row
+  //if any more empty rows found, return 
+  
+  //if yes, mark that row to be deleted
+  //delete that row
+  //return new 2d array with trimmed row
+
+  //either trimming above or below shape
+  // if below, then return array is is
+  // if above, then copy rows up 
+  
+
+
 }
 
 
@@ -80,8 +158,11 @@ void tettrim(char *str)
 		i++;
 	}
 
-
+	tettrimrows(tet2d);
+	
+	//trimcol stores the column number to be trimmed
 	trimcol = checktetcol(tet2d);
+	//while trimcol contains a number > 0
 	while (trimcol >= 0)
 	{
 		tettrimcol(tet2d, trimcol);
