@@ -21,6 +21,25 @@ char **makemap(int n)
 			map[i][j++] = '.';
 		i++;
 	}
+
+/*
+	int maplen;
+	int i; 
+	
+	i = 0;
+	maplen = (n * n) + n + 1;
+	map = ft_memalloc(maplen);
+	map[maplen] = '\0';
+	while (i < (maplen - 1))
+	{
+		if (((i + 1) % (n + 1)) == 0 ) 
+			map[i] = '\n';
+		else
+			map[i] = '.';
+		i++;
+	}
+*/
+
 	return (map); 
 }
 
