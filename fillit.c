@@ -9,16 +9,16 @@ char **makemap(int n)
 	int j;
 	
 	i = 0;
-	map = (char**)malloc((n + 1) * sizeof(char*)); 
-	if (map == 0)
-		return(0);
+	if (!(map = (char**)malloc((n + 1) * sizeof(char*)))); 
+		return (NULL);
 	map[n + 1] = 0;
 	while (i < n)
 	{
-		map[i] = ft_memalloc(n);
+		map[i] = ft_memalloc(n + 1);
 		j = 0; 
-		while (j < n)
+		while (j < i(n + 1))
 			map[i][j++] = '.';
+		map[i][j] == '\0';
 		i++;
 	}
 	return (map); 
