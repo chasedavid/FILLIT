@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/11 23:28:48 by aho               #+#    #+#             */
-/*   Updated: 2017/11/02 11:55:03 by aho              ###   ########.fr       */
+/*   Created: 2017/10/04 00:56:56 by aho               #+#    #+#             */
+/*   Updated: 2017/10/15 01:07:21 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
-void	ft_lstiter(t_list *lst, char **map, void (*f)(t_list *elem, char **map, int c))
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	t_list	*current;
-//	char **map; 
+	int		i;
+	char	*str;
+	char	*substr;
 
-//	map = str;
-
-	current = lst;
-	while (current)
+	i = 0;
+	str = (char*)s;
+	substr = ft_memalloc(len + 1);
+	if (substr == NULL)
+		return (NULL);
+	if (!s)
+		return (NULL);
+	while (len > 0)
 	{
-		f(current, map, current->alpha);
-		current = current->next;
+		substr[i] = str[start];
+		i++;
+		start++;
+		len--;
 	}
+	substr[i] = '\0';
+	return (substr);
 }
