@@ -39,7 +39,6 @@ char *trimrows(char *str)
 		}
 		i++;
 	}
-	free(str);
 	return (trim);
 }
 
@@ -102,7 +101,6 @@ char *trimcols(char *str)
 		else
 			i = col;
 	}
-	free(str);
 	return (str);
 }
 
@@ -114,7 +112,8 @@ char *tettrim_str(char *str)
 {
 	char *trim; 
 //	trim = trimrows(str);
-	printf("original ft_strlen(str):%zu \n", ft_strlen(str));
+//	printf("original ft_strlen(str):%zu \n", ft_strlen(str));
+
 	trim = trimcols(str);
 
 
