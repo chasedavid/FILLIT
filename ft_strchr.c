@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/11 23:28:48 by aho               #+#    #+#             */
-/*   Updated: 2017/11/02 11:55:03 by aho              ###   ########.fr       */
+/*   Created: 2017/09/27 22:45:45 by aho               #+#    #+#             */
+/*   Updated: 2017/10/15 00:38:26 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
-void	ft_lstiter(t_list *lst, char **map, void (*f)(t_list *elem, char **map, int c))
+char	*ft_strchr(const char *s, int c)
 {
-	t_list	*current;
-//	char **map; 
+	size_t i;
 
-//	map = str;
-
-	current = lst;
-	while (current)
+	i = 0;
+	while (s[i] != c)
 	{
-		f(current, map, current->alpha);
-		current = current->next;
+		if ((i == ft_strlen(s)) || (s[i] == '\0'))
+			return (NULL);
+		i++;
 	}
+	return ((char*)&s[i]);
 }

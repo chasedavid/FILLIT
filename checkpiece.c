@@ -3,12 +3,13 @@
 //this function checks if the data in link passed in can fit into the grid
 
 
-void checkpiece(t_list *link, char *grid, int alpha)
+void checkpiece(t_list *link, char **map, int alpha)
 {
 
 	printf("------------- checkpiece() function -------------\n");
 	printf("alpha: %c \n", alpha);
-	printf("grid:\n%s \n", grid);
+	printf("map[0]: %s \n", map[0]);
+	printf("map[1]: %s \n", map[1]);
 	printf("tetrimino piece:\n%s \n", link->content);
 
 
@@ -16,7 +17,7 @@ void checkpiece(t_list *link, char *grid, int alpha)
 	{
 		//
 		printf("------------- tettrim() function -------------\n");
-		tettrim(link->content);
+		tettrim_str(link->content);
 
 
 

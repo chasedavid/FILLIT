@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 01:43:41 by aho               #+#    #+#             */
-/*   Updated: 2017/11/02 10:01:27 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/02 11:53:47 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,10 @@ int check_buf(char *buf);
 int checkbufchar(char *buf);
 int isvalidpiece(char *buf);
 void fillit(t_list **alst);
-void checkpiece(t_list *link, char *grid, int alpha);
+void checkpiece(t_list *link, char **map, int alpha);
 
-void    ft_lstiter(t_list *lst, char *str, void (*f)(t_list *elem, char *str, int c));
+void    ft_lstiter(t_list *lst, char **map, void (*f)(t_list *elem, char **map, int c));
 
-void tettrim(char *str);
+char *tettrim_str(char *str);
 
 #endif
