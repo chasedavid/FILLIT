@@ -3,60 +3,58 @@
 
 char *trimrows(char *str)
 {
-	char *trim;
 	int spaces;
 	int hashes;
 	int len;
 	int i;
 
-	trim = str;
 	spaces = 0;
 	hashes = 0;
 	len = ft_strlen(str);
 	i = 0;
-	while (trim[i] != '\0')
+	while (str[i] != '\0')
 	{
-		if (trim[i] == '.')
+		if (str[i] == '.')
 			spaces++;
 		if (spaces == 4 && hashes == 0) 
 		{
 			len = len - 4;
-			trim = ft_strsub(trim, i + 2, len);
+			str = ft_strsub(str, i + 2, len);
 			spaces = 0;
 			i = -1;
 		}
-		if (trim[i] == '#') 
+		if (str[i] == '#') 
 		{
 			spaces = 0;
 			hashes++;
 		}
 		if (hashes == 4) 
 		{
-			while (trim[i] != '\n') 
+			while (str[i] != '\n') 
 				i++;
-			trim = ft_strsub(trim, 0, i + 1);
-			return (trim);
+			str = ft_strsub(str, 0, i + 1);
+			return (str);
 		}
 		i++;
 	}
-	free(str);
-	return (trim);
+	return (str);
 }
 
-char	*ft_something(char *str, int col, int n)
+char	*t_deletecol(char *str, int col, int n)
 {
 	int		i;
 	int		j;
+	int 	len;
 	char	*trim;
 
 	i = 0;
 	j = 0;
+	len = ft_strlen(str);
 	//malloc space for new string
 	if (!(trim = malloc(ft_strlen(str) - 4)))
 		return (NULL);
-//	printf("malloc trim:\n%s \n", trim);
 	//iterate through and copy str to malloc
-	while (i < (int)ft_strlen(str))
+	while (i < len)
 	{
 		if (((i + 1) % n) == col)
 			i++;
@@ -64,9 +62,6 @@ char	*ft_something(char *str, int col, int n)
     		trim[j++] = str[i++];
 	} 
 	trim[j] = '\0';
-
-//	trim = trimrows(trim, col); 
-
 	free(str);
 	return (trim);
 }
@@ -95,7 +90,7 @@ char *trimcols(char *str)
 		}
 		if (indicator == 0)
 		{
-			str = ft_something(str, col, n);
+			str = t_deletecol(str, col, n);
 			n--;
 			i = col - 1;
 		}
@@ -107,17 +102,10 @@ char *trimcols(char *str)
 }
 
 
-
-
-
 char *tettrim_str(char *str)
 {
-	char *trim; 
-//	trim = trimrows(str);
-	printf("original ft_strlen(str):%zu \n", ft_strlen(str));
-	trim = trimcols(str);
-
-
-	printf("trimmed string:\n%s \n", trim);
-	return (trim); 
+	str = trimrows(str);
+	str = trimcols(str);
+	printf("trimmed string:\n%s \n", str);
+	return (str); 
 }
