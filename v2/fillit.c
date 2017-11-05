@@ -36,29 +36,41 @@ void fillit(t_list **alst)
 	mapsize = 3; // technically sqrt(4 * lst_size)
 	map = makemap(mapsize);
 
-	char *hardcodestring = "AB...\nAB...\nA....\nA....\n";
+	char *hardcodestring = "CC..D\nC..AD\nCAAAD\nBBBBD\nEEEE.\n";
 	char **hardcodemap = ft_strsplit(hardcodestring, '\n');
-//	printf("\n >>>> arr2dlenrow: %d \n", arr2dlenrow(map));
-//	printf("\n >>>> arr2dlencol: %d \n", arr2dlencol(map));	
 
-/*
 	int i;
 	i = 0;
-	while (i < mapsize) 
+	while (i < 5) 
 	{
-		printf("map[%i]: %s \n", i, map[i]);
+		printf("hardcode map[%i]: %s \n", i, hardcodemap[i]);
 		i++;
 	}
 
+//	printf("\n >>>> arr2dlenrow: %d \n", arr2dlenrow(map));
+//	printf("\n >>>> arr2dlencol: %d \n", arr2dlencol(map));	
+
 //	if (map[1][3] == '\0') 
 //		printf("map[1][3]: %c equals null terminator\n", map[1][3]);
-*/
+
 	current = *alst;
 //	xy = getnextxy(map, tettrim_str(current->next->content), mapsize);
+	char *piece; 
+	piece = tettrim_str(current->next->content);
 
-	xy = getnextxy(hardcodemap, tettrim_str(current->next->content), 5);
+
+	xy = getnextxy(hardcodemap, piece, 5);
 	printf("fillit() ----- xy->x: %d \n", xy.x);
 	printf("fillit() ----- xy->y: %d \n", xy.y);
+
+	hardcodemap = placexy(hardcodemap, piece, 'F', xy);
+
+	i = 0;
+	while (i < 5)
+	{
+		printf("after placexy() map[%i]: %s \n", i, hardcodemap[i]);
+		i++;
+	}
 
 
 

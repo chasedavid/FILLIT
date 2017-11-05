@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 01:43:41 by aho               #+#    #+#             */
-/*   Updated: 2017/11/05 02:08:47 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/05 02:30:07 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,6 @@ int arr2dlencol(char **array2d);
 t_coord getnextxy(char **map, char *piece, int mapsize);
 int piecewidth(char *piece);
 int maprowavails(char *row);
-
+char **placexy(char **map, char *piece, int alpha, t_coord xy);
 
 #endif
