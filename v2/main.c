@@ -13,9 +13,7 @@ int main(int argc, char **argv)
 	char buf[BUF_SIZE];
 	t_list *linked_list;
 	int alpha;
-	int lst_i; 
 
-	lst_i = 0;
 	linked_list = ft_memalloc(sizeof(t_list));
 	alpha = 65;
 	if (argc != 2) 
@@ -35,9 +33,8 @@ int main(int argc, char **argv)
 //		check_buf(buf);
 		if (isvalidpiece(buf) == 1)
 		{
-			ft_lstappend(&linked_list, ft_lstnew(buf, 21, alpha, 0, 0, lst_i));
-			alpha++;
-			lst_i++;
+			ft_lstappend(&linked_list, ft_lstnew(buf, 21, alpha));
+			alpha++; 
 		}
 		ret = read(fd, buf, 1);
 	}

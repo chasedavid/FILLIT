@@ -9,23 +9,31 @@ char **makemap(int n)
 	int j;
 	
 	i = 0;
-	if (!(map = (char**)malloc((n + 1) * sizeof(char*)))); 
+	if (!(map = (char**)malloc((n + 1) * sizeof(char*)))) 
 		return (NULL);
 	map[n + 1] = 0;
 	while (i < n)
 	{
 		map[i] = ft_memalloc(n + 1);
 		j = 0; 
-		while (j < i(n + 1))
+		while (j < n)
 			map[i][j++] = '.';
-		map[i][j] == '\0';
+		map[i][j] = '\0';
 		i++;
 	}
 	return (map); 
 }
 
-//ft_lstsize()
+int ft_lstsize(t_list *last)
+{
+	int num;
+	num = (last->alpha) - 64;	
+	printf("lstsize: %d \n", num);
+	return (num);
+}
 
+
+/*
 int		ft_sqrt(int n)
 {
 	int		i;
@@ -36,12 +44,17 @@ int		ft_sqrt(int n)
 
 	}
 }
+*/
 
 void fillit(t_list **alst)
 {
 	char **map;
 	int mapsize;
 	t_list *current; //this is the current piece
+
+	t_list *last; 
+	last = ft_lstlastitem(alst);
+	ft_lstsize(last);
 
 	mapsize = 2; // technically sqrt(4 * lst_size)
 	map = makemap(mapsize);
@@ -53,10 +66,6 @@ void fillit(t_list **alst)
 		printf("map[%i]: %s \n", i, map[i]);
 		i++;
 	}
-
-
-
-
 
 
 //	ft_printlist(alst);
