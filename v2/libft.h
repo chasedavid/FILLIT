@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 01:43:41 by aho               #+#    #+#             */
-/*   Updated: 2017/11/05 02:06:57 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/05 02:08:47 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,17 @@ typedef struct		s_list
 	void			*content;
 	size_t			content_size;
 	int 			alpha;
-	int				x; 
-	int				y; 
-	int				lst_i;
 	struct s_list	*prev;
 	struct s_list	*next;
 }					t_list;
 
+typedef struct		s_coord
+{
+	int 			x;
+	int				y;
+}					t_coord;
+
+t_list				*ft_lstnew(void const *content, size_t content_size, int alpha);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void(*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
@@ -103,16 +107,18 @@ int isvalidpiece(char *buf);
 void fillit(t_list **alst);
 void checkpiece(t_list *link, char **map, int alpha);
 
-t_list      *ft_lstnew(void const *content, size_t content_size, int alpha, int x, int y, int lst_i);
 void    ft_lstiter(t_list *lst, char **map, void (*f)(t_list *elem, char **map, int c));
 
 char *tettrim_str(char *str);
 char **trypiece(char **map, char *piece);
-void *ft_lstlastitem(t_list **alst);
 
 int arr2dlenrow(char **array2d);
 int arr2dlencol(char **array2d);
 
+
+t_coord getnextxy(char **map, char *piece, int mapsize);
+int piecewidth(char *piece);
+int maprowavails(char *row);
 
 
 #endif
