@@ -46,7 +46,7 @@ t_coord getnextxy(char **map, char *piece, int mapsize)
 	printf("getnextxy() // maprowavails() - spaces in row: %d \n", maprowavails(map[x]));
 	printf("getnextxy() // piecewidth: %d \n", piecewidth(piece));
 
-	printf("x: %d  y: %d \n", x, y);
+//	printf("x: %d  y: %d \n", x, y);
 
 	while (x < mapsize)
 	{
@@ -71,22 +71,52 @@ t_coord getnextxy(char **map, char *piece, int mapsize)
 	return (xy);
 }
 
-/*
-char **placexy(char **map, char *piece, int alpha)
+
+char **placexy(char **map, char *piece, int alpha, t_coord xy)
 {
-	
+	int i;
+	int x; 
+	int y;
+	int len;
 
-
-
+	i = 0;
+	x = xy.x; 
+	y = xy.y;
+	len = ft_strlen(piece);
+	while (len > 0)
+	{
+//		printf("piece[%i]: %c \n", i, piece[i]);
+		if (piece[i] == '#') 
+		{
+			map[x][y] = alpha;
+			y++;
+			i++;
+		}
+		if (piece[i] == '\n') 
+		{
+			x++;
+			y = xy.y;
+			i++;
+		}
+		if (piece[i] == '.')
+		{
+			y++;
+			i++;
+		}
+//		printf("piece: %s\n" , piece);
+//		printf("xy.x: %d\n" , xy.x);
+//		printf("xy.y: %d\n" , xy.y);
+		len--;
+	}
+	return (map);
 }
-*/
 
- /*
-int checkxy(char **map, char *piece, int x, int y)
+
+
+int checkxy(char **map, char *piece, t_coord xy)
 {
 	printf("\n>>>>>>>>>>>>>>>>>>> checkxy() function <<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
 	printf("piece:\n%s\n", piece);
-
 	int x; 
 	int y; 
 	int setcol;
@@ -96,14 +126,11 @@ int checkxy(char **map, char *piece, int x, int y)
 
 	x = 0; 
 	y = 0;
-
 	i = 0; 
 	piecelen = ft_strlen(piece);
 	newline = 0;
 	pieces = 0;
-	//get 2d arrlen -- arrlen2d()
-	//while maplen > 0
-	
+
 		if ((piece[0] == '.') && (y - 1 > 0)) 
 		{
 			y = y - 1;
@@ -136,13 +163,7 @@ int checkxy(char **map, char *piece, int x, int y)
 				{
 					return (1);
 				}
-
 		}
-
-
-		
-
 	}
 	return (-1);
 }
- */
