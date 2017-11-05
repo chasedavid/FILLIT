@@ -24,6 +24,18 @@ char **makemap(int n)
 	return (map); 
 }
 
+//ft_lstsize()
+
+int		ft_sqrt(int n)
+{
+	int		i;
+
+	i = 0;
+	while (i)
+	{
+
+	}
+}
 
 void fillit(t_list **alst)
 {
@@ -31,7 +43,7 @@ void fillit(t_list **alst)
 	int mapsize;
 	t_list *current; //this is the current piece
 
-	mapsize = 2;
+	mapsize = 2; // technically sqrt(4 * lst_size)
 	map = makemap(mapsize);
 
 	int i;
