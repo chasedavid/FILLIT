@@ -1,79 +1,42 @@
-#include <sys/types.h> 
-#include <sys/stat.h> 
-#include <fcntl.h>
-#include "libft.h" 
-#define BUF_SIZE 20
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/06 00:15:08 by aho               #+#    #+#             */
+/*   Updated: 2017/11/06 01:29:54 by aho              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h" 
 
 int main(int argc, char **argv)
 {
-	int fd;
-	int ret;
-	char buf[BUF_SIZE];
-	t_list *linked_list;
-	int alpha;
+	t_list *tetlist;
+	char **map; 
+	int mapsize;
+	t_coord xy; 
 
-	linked_list = ft_memalloc(sizeof(t_list));
-	alpha = 65;
+	mapsize = 5;
+	tetlist = ft_memalloc(sizeof(t_list));
+	map = makemap(mapsize);
+	xy.x = 0;
+	xy.y = 0;
+	if (argc == 2)
+	{
+		readtetfile(argv[1], &tetlist);
+		ft_lstiter(tetlist, trimpiece);
+		fillit(map, tetlist->next, xy, mapsize);
+	}
 	if (argc != 2) 
 		ft_putstr("Incorrect number of arguments \n");
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1) 
-	{
-		ft_putstr("open() failed \n");
-		return (1);
-	}
-
-	while ((ret = read(fd, buf, BUF_SIZE)))		
-//	while ((ret = read(fd, buf, BUF_SIZE)) > 21)		
-//	while ((ret = read(fd, buf + bufdone, BUF_SIZE - bufdone)) > 21)	
-	{
-		buf[ret] = '\0';
-//		check_buf(buf);
-		if (isvalidpiece(buf) == 1)
-		{
-			ft_lstappend(&linked_list, ft_lstnew(buf, 21, alpha));
-			alpha++; 
-		}
-		ret = read(fd, buf, 1);
-	}
-
-//	while ((ret = read(fd, buf, BUF_SIZE)) > 20) 
-//	{
-//		buf[ret] = '\n';
-//		buf[ret + 1] = '\0';
-//		if (isvalidpiece(buf) == 1)
-//		{
-//			ft_lstappend(&linked_list, ft_lstnew(buf, 21, alpha));
-//			alpha++; 
-//		}
-//	}
-
-	ft_putstr("file opened: ");	
-	ft_putnbr(fd);
-	ft_putchar('\n');
-
-	//1. read the file and store into a linked list 
-	//2. make the map with a given size
-	//3. call fillit to fill map with linked list pieces
-
-	char **map;
-	makemap();
-
-
-
-
-
 
 //	fillit(&linked_list);
-//	ft_printlist(&linked_list);
-
-	if (close(fd) == -1)
-	{
-		ft_putstr("close() failed \n");
-		return (1);
-	}
+//	ft_printlist(&tetlist);
+//	ft_printlistitem(tetlist->next);
+	printf("\n----- final map result ------ \n");
+	ft_print2d(map, mapsize);
 	return (0);
 }
-

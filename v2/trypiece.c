@@ -58,8 +58,8 @@ t_coord getnextxy(char **map, char *piece, int mapsize)
 	xy.x = x;
 	xy.y = y;
 //	printf("getnextxy() // piece:\n%s \n", piece);
-	printf("getnextxy() // maprowavails - spaces in row: %d \n", maprowavails(map[x]));
-	printf("getnextxy() // firstrowpieces: %d \n", firstrowpieces(piece));
+//	printf("getnextxy() // maprowavails - spaces in row: %d \n", maprowavails(map[x]));
+//	printf("getnextxy() // firstrowpieces: %d \n", firstrowpieces(piece));
 
 //	printf("x: %d  y: %d \n", x, y);
 
@@ -68,7 +68,7 @@ t_coord getnextxy(char **map, char *piece, int mapsize)
 		y = 0;
 		while (y < mapsize && (maprowavails(map[x]) >= firstrowpieces(piece))) 
 		{
-			printf("x: %d  y: %d \n", x, y);
+//			printf("x: %d  y: %d \n", x, y);
 			if (map[x][y] == '.')
 			{
 				xy.x = x;
@@ -112,25 +112,25 @@ int checkxy(char **map, char *piece, t_coord xy)
 		//for offset piece
 		if ((piece[i] == '.') && i == 0 && (y - 1 > 0)) 
 		{
-			printf(">> if loop 1:  piece[%i]: %c // y: %i \n", i, piece[i], y);
+//			printf(">> if loop 1:  piece[%i]: %c // y: %i \n", i, piece[i], y);
 			y = y - 1;
 			setcol = y;
 			y++;
 		}
 		if (piece[i] == '.' && i > 0) 
 		{
-			printf(">> if loop 2:  piece[%i]: %c // y: %i \n", i, piece[i], y);
+//			printf(">> if loop 2:  piece[%i]: %c // y: %i \n", i, piece[i], y);
 			y++;
 		}
 		if (piece[i] == '#' && map[x][y] == '.')
 		{
-			printf(">> if loop 3:  piece[%i]: %c // y: %i \n", i, piece[i], y);
+//			printf(">> if loop 3:  piece[%i]: %c // y: %i \n", i, piece[i], y);
 			y++;
 			pieces++;
 		}
 		if (piece[i] == '\n')
 		{
-			printf(">> if loop 4:  piece[%i]: %c // y: %i \n", i, piece[i], y);
+//			printf(">> if loop 4:  piece[%i]: %c // y: %i \n", i, piece[i], y);
 			x++;
 			y = setcol;
 		}
@@ -150,7 +150,7 @@ int checkxy(char **map, char *piece, t_coord xy)
 
 char **placexy_offset(char **map, char *piece, int alpha, t_coord xy)
 {
-	printf("\n>>>>>>>>>>>>>>>>>>> placexy_offset() function <<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
+//	printf("\n>>>>>>>>>>>>>>>>>>> placexy_offset() function <<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
 	int x; 
 	int y; 
 	int setcol;
@@ -165,25 +165,25 @@ char **placexy_offset(char **map, char *piece, int alpha, t_coord xy)
 		//printf(">> inside checkxy - piece[%i]: %c // y: %i \n", i, piece[i], y);
 		if ((piece[i] == '.') && i == 0 && (y - 1 > 0)) 
 		{
-			printf(">> if loop 1:  piece[%i]: %c // y: %i \n", i, piece[i], y);
+//			printf(">> if loop 1:  piece[%i]: %c // y: %i \n", i, piece[i], y);
 			y = y - 1;
 			setcol = y;
 			y++;
 		}
 		if (piece[i] == '.' && i > 0) 
 		{
-			printf(">> if loop 2:  piece[%i]: %c // y: %i \n", i, piece[i], y);
+//			printf(">> if loop 2:  piece[%i]: %c // y: %i \n", i, piece[i], y);
 			y++;
 		}
 		if (piece[i] == '#' && map[x][y] == '.')
 		{
-			printf(">> if loop 3:  piece[%i]: %c // y: %i \n", i, piece[i], y);
+//			printf(">> if loop 3:  piece[%i]: %c // y: %i \n", i, piece[i], y);
 			map[x][y] = alpha;
 			y++;
 		}
 		if (piece[i] == '\n')
 		{
-			printf(">> if loop 4:  piece[%i]: %c // y: %i \n", i, piece[i], y);
+//			printf(">> if loop 4:  piece[%i]: %c // y: %i \n", i, piece[i], y);
 			x++;
 			y = setcol;
 		}
