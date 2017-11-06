@@ -5,6 +5,7 @@
 
 void checkpiece(t_list *link, char **map, int alpha)
 {
+	t_coord xy;
 	char *piece;
 	printf("------------- checkpiece() function -------------\n");
 	printf("alpha: %c \n", alpha);
@@ -18,8 +19,13 @@ void checkpiece(t_list *link, char **map, int alpha)
 		//
 		printf("------------- tettrim() function -------------\n");
 		piece = tettrim_str(link->content);
-//		map = trypiece(map, piece);
-
+		
+		//replace 5 with mapsize
+		xy = getnextxy(map, piece, 5);
+		if (checkxy(map, piece, xy) == 1) 
+			map = placexy(map, piece, link->alpha, xy);
+		else
+			printf("waaaah checkxy failed \n");
 
 	//change available spaces in grid to match char
 	//if there's a match, place link into solution list

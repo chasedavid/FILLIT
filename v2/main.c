@@ -54,7 +54,19 @@ int main(int argc, char **argv)
 	ft_putnbr(fd);
 	ft_putchar('\n');
 
-	fillit(&linked_list);
+	//1. read the file and store into a linked list 
+	//2. make the map with a given size
+	//3. call fillit to fill map with linked list pieces
+
+	char **map;
+	makemap();
+
+
+
+
+
+
+//	fillit(&linked_list);
 //	ft_printlist(&linked_list);
 
 	if (close(fd) == -1)
