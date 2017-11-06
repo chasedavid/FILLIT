@@ -24,19 +24,37 @@ char **makemap(int n)
 	return (map); 
 }
 
+int fillit(char **map, t_list *link, t_coord xy)
+{
+	xy = getnextxy(map);
+	if (checkxy(map, link->content, xy) = 1)
+		map = placexy(map, link->content, link->alpha, xy);
+	else 
+		printf("waaaaaaah \n");
 
 
+
+
+}
+
+
+
+
+
+/*
 void fillit(t_list **alst)
 {
 	char **map;
 	int mapsize;
 	t_list *current; //this is the current piece
-	t_coord xy;
+//	t_coord xy;
 
-	mapsize = 3; // technically sqrt(4 * lst_size)
+	mapsize = 5; // technically sqrt(4 * lst_size)
 	map = makemap(mapsize);
-
-	char *hardcodestring = "CC..D\nC..AD\nCAAAD\nBBBBD\nEEEE.\n";
+*/
+/*
+//  HARDCODED MAP
+	char *hardcodestring = "CCBAA\nCBBBA\nC...A\n.....\n.....\n";
 	char **hardcodemap = ft_strsplit(hardcodestring, '\n');
 
 	int i;
@@ -46,15 +64,17 @@ void fillit(t_list **alst)
 		printf("hardcode map[%i]: %s \n", i, hardcodemap[i]);
 		i++;
 	}
-
+*/
 //	printf("\n >>>> arr2dlenrow: %d \n", arr2dlenrow(map));
 //	printf("\n >>>> arr2dlencol: %d \n", arr2dlencol(map));	
 
 //	if (map[1][3] == '\0') 
 //		printf("map[1][3]: %c equals null terminator\n", map[1][3]);
 
-	current = *alst;
+//	current = *alst;
 //	xy = getnextxy(map, tettrim_str(current->next->content), mapsize);
+
+/*
 	char *piece; 
 	piece = tettrim_str(current->next->content);
 
@@ -63,14 +83,11 @@ void fillit(t_list **alst)
 	printf("fillit() ----- xy->x: %d \n", xy.x);
 	printf("fillit() ----- xy->y: %d \n", xy.y);
 
-	hardcodemap = placexy(hardcodemap, piece, 'F', xy);
+	printf("checkxy result: %d \n", checkxy(hardcodemap, piece, xy));
 
-	i = 0;
-	while (i < 5)
-	{
-		printf("after placexy() map[%i]: %s \n", i, hardcodemap[i]);
-		i++;
-	}
+	if (checkxy(hardcodemap, piece, xy) == 1) 
+		hardcodemap = placexy(hardcodemap, piece, 'F', xy);
+	if (checkxy(hardcodemap, piece, xy) == -1)
 
 
 
@@ -84,4 +101,14 @@ void fillit(t_list **alst)
 	//once all pieces have been placed, print grid to show solution
 
 
+	int i;
+	i = 0;
+	while (i < 5)
+	{
+		printf("final map[%i]: %s \n", i, map[i]);
+		i++;
+	}
+
+
 }
+*/
