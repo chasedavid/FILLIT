@@ -106,6 +106,6 @@ char *tettrim_str(char *str)
 {
 	str = trimrows(str);
 	str = trimcols(str);
-	printf("trimmed string:\n%s \n", str);
+//	printf("trimmed string:\n%s \n", str);
 	return (str); 
 }

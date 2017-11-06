@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 01:43:41 by aho               #+#    #+#             */
-/*   Updated: 2017/11/05 19:06:19 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/06 01:27:06 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,13 @@ void    ft_lstappend(t_list **alst, t_list *new);
 int check_buf(char *buf);
 int checkbufchar(char *buf);
 int isvalidpiece(char *buf);
-void fillit(t_list **alst);
+
+int fillit(char **map, t_list *piece, t_coord xy, int mapsize);
+
 void checkpiece(t_list *link, char **map, int alpha);
 
-void    ft_lstiter(t_list *lst, char **map, void (*f)(t_list *elem, char **map, int c));
+void trimpiece(t_list *link);
+void    ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 
 char *tettrim_str(char *str);
 char **trypiece(char **map, char *piece);
@@ -121,5 +124,10 @@ int piecewidth(char *piece);
 int maprowavails(char *row);
 char **placexy(char **map, char *piece, int alpha, t_coord xy);
 int checkxy(char **map, char *piece, t_coord xy);
+
+int readtetfile(char *argv, t_list **list);
+void ft_print2d(char **array2d, int rows);
+void ft_printlistitem(t_list *item);
+char **makemap(int n);
 
 #endif
