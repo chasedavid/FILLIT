@@ -1,7 +1,7 @@
 #include "libft.h" 
 #include <stdio.h>
 
-char **makemap(int n)
+char **makemap(int n) // function3
 {
 
 	char **map;
@@ -24,29 +24,31 @@ char **makemap(int n)
 	return (map); 
 }
 
-int ft_lstsize(t_list *last)
+int ft_lstsize(t_list *last) // function2
 {
 	int num;
+
 	num = (last->alpha) - 64;	
 	printf("lstsize: %d \n", num);
 	return (num);
 }
 
-
-/*
 int		ft_sqrt(int n)
 {
 	int		i;
 
-	i = 0;
+	i = 1;
 	while (i)
 	{
-
+		if ((i * i) >= n)
+			return (i);
+		++i;
 	}
+	return (0);
 }
-*/
 
-void fillit(t_list **alst)
+
+void fillit(t_list **alst, int min_n, int i, int j) // function 1
 {
 	char **map;
 	int mapsize;
@@ -56,7 +58,7 @@ void fillit(t_list **alst)
 	last = ft_lstlastitem(alst);
 	ft_lstsize(last);
 
-	mapsize = 2; // technically sqrt(4 * lst_size)
+	mapsize = min_n; // technically sqrt(4 * lst_size)
 	map = makemap(mapsize);
 
 	int i;
