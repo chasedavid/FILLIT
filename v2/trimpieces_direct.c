@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   trimpieces_direct.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/11 23:28:48 by aho               #+#    #+#             */
-/*   Updated: 2017/11/06 17:51:55 by aho              ###   ########.fr       */
+/*   Created: 2017/11/07 00:36:14 by aho               #+#    #+#             */
+/*   Updated: 2017/11/07 00:42:04 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft.h" 
 
-void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
+void trimpieces(t_list *list)
 {
-    printf("\n----- entering lstiter.c -------\n");
-	t_list	*current;
-	current = lst;
-	while (current)
-	{
-		f(current);
-		printf("lstiter.c - current->content:\n%s\n", current->content);
+	t_list *current;
+	current = list;
+    while (current != NULL)
+    {
+        if (current->content != NULL)
+			current->content = tettrim_str(current->content);
 		current = current->next;
-	}
+    }
 }

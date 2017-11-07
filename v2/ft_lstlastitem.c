@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   trimpiece.c                                        :+:      :+:    :+:   */
+/*   ft_lstlastitem.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/06 01:18:45 by aho               #+#    #+#             */
-/*   Updated: 2017/11/06 01:24:51 by aho              ###   ########.fr       */
+/*   Created: 2017/11/06 14:55:10 by aho               #+#    #+#             */
+/*   Updated: 2017/11/06 14:55:19 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" 
+#include "libft.h"
 
-void trimpiece(t_list *link)
+void *ft_lstlastitem(t_list **alst)
 {
-	if (link->content != 0) 
-		link->content = tettrim_str(link->content);
+    t_list *current;
+    t_list *last;
+    current = (*(alst));
+    while (current->next != NULL)
+        current = current->next;
+    last = current;
+    return (last);
 }
