@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 01:43:41 by aho               #+#    #+#             */
-/*   Updated: 2017/11/06 01:27:06 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/07 01:14:53 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <string.h>
 
+//LIBFT
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
@@ -78,6 +79,8 @@ int					ft_powerofnum(int n);
 int					ft_wordlen(char const *s, char c);
 int					ft_wordcount(char const *s, char c);
 int					check_int(long int num);
+
+//FILLIT STRUCTS
 typedef struct		s_list
 {
 	void			*content;
@@ -93,41 +96,53 @@ typedef struct		s_coord
 	int				y;
 }					t_coord;
 
+//LINKED LIST FUNCTIONS
 t_list				*ft_lstnew(void const *content, size_t content_size, int alpha);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void(*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
-void ft_printlist(t_list **alst);
-void    ft_lstappend(t_list **alst, t_list *new);
-int check_buf(char *buf);
-int checkbufchar(char *buf);
-int isvalidpiece(char *buf);
+//FILLIT LIST RELATED FUNCTIONS
+void				ft_printlist(t_list *alst);
+void				ft_lstappend(t_list **alst, t_list *new);
+void 				*ft_lstlastitem(t_list **alst);
+int 				ft_lstsize(t_list *last);
+void                ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+//FILLIT FILE READING FUNCTIONS
+int 				readtetfile(char *argv, t_list **list);
+int					check_buf(char *buf);
+int					checkbufchar(char *buf);
 
-int fillit(char **map, t_list *piece, t_coord xy, int mapsize);
+//FILLIT TEXT PARSING FUNCTIONS
+int 				isvalidpiece(char *buf);
+void                trimpieces(t_list *list);
+char                *tettrim_str(char *str);
 
-void checkpiece(t_list *link, char **map, int alpha);
+//FILLIT
+int					fillit(char **map, t_list *piece, t_coord xy, int mapsize);
 
-void trimpiece(t_list *link);
-void    ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+//FILLIT GRID CHECKING FUNCTIONS - OLD
+void                checkpiece(t_list *link, char **map, int alpha);
 
-char *tettrim_str(char *str);
-char **trypiece(char **map, char *piece);
+//FILLIT GRID CHECKING FUNCTIONS - NEW
+char				**trypiece(char **map, char *piece);
+t_coord				getnextxy(char **map, char *piece, int mapsize);
+int					piecewidth(char *piece);
+int					maprowavails(char *row);
+char				**placexy(char **map, char *piece, int alpha, t_coord xy);
+int					checkxy(char **map, char *piece, t_coord xy);
+int        			 skipxy(t_coord xy, int mapsize);
 
-int arr2dlenrow(char **array2d);
-int arr2dlencol(char **array2d);
+//FILLIT PRINTING FUNCTIONS
+void				ft_print2d(char **array2d, int rows);
+void				ft_printlistitem(t_list *item);
 
-
-t_coord getnextxy(char **map, char *piece, int mapsize);
-int piecewidth(char *piece);
-int maprowavails(char *row);
-char **placexy(char **map, char *piece, int alpha, t_coord xy);
-int checkxy(char **map, char *piece, t_coord xy);
-
-int readtetfile(char *argv, t_list **list);
-void ft_print2d(char **array2d, int rows);
-void ft_printlistitem(t_list *item);
-char **makemap(int n);
+//FILLIT MAP FUNCTIONS
+char 				**makemap(int n);
+int 				mapsizemin(t_list **list);
+int     			ft_sqrt(int n);
+int					arr2dlenrow(char **array2d);
+int					arr2dlencol(char **array2d);
 
 #endif

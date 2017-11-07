@@ -47,22 +47,20 @@ int maprowavails(char *row)
 }
 
 
-t_coord getnextxy(char **map, char *piece, int mapsize)
+t_coord 	getnextxy(char **map, char *piece, int mapsize)
 {
-	t_coord xy;
-	int x; 
-	int y;
+	t_coord	xy;
+	int		x; 
+	int		y;
+
 	x = 0; 
 	y = 0;
-
 	xy.x = x;
 	xy.y = y;
 //	printf("getnextxy() // piece:\n%s \n", piece);
 //	printf("getnextxy() // maprowavails - spaces in row: %d \n", maprowavails(map[x]));
 //	printf("getnextxy() // firstrowpieces: %d \n", firstrowpieces(piece));
-
 //	printf("x: %d  y: %d \n", x, y);
-
 	while (x < mapsize)
 	{
 		y = 0;
@@ -84,6 +82,28 @@ t_coord getnextxy(char **map, char *piece, int mapsize)
 		x++;
 	}
 	return (xy);
+}
+
+int 		skipxy(t_coord xy, int mapsize)
+{
+	printf("-- skipxy xy.x : %d  \n", xy.x);
+	printf("-- skipxy xy.y : %d  \n", xy.y);
+	printf("-- skipxy mapsize : %d  \n", mapsize);
+	if (xy.y + 1 < mapsize)
+	{
+		xy.y++;
+		printf("go to next col - new xy [%d, %d] \n", xy.x, xy.y);
+		return (1);
+	}
+	else if (xy.x + 1 < mapsize)
+	{
+		xy.y = 0;
+		xy.x++;
+		printf("go to next row - new xy [%d, %d] \n", xy.x, xy.y);
+		return (1);
+	}
+	else
+		return (-1);
 }
 
 
