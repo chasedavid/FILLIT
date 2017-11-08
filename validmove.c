@@ -6,11 +6,14 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/03 14:42:26 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/06 10:16:35 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/08 11:21:17 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		iterate_j(int j, int min_n) //function1
+#include "libft.h"
+#include "fillit.h"
+
+/*int		iterate_j(int j, int min_n) //function1
 	{
 		if (++j >= min_n)
 			return (0);
@@ -27,24 +30,24 @@ int		iterate_i(int i, int j) //function2
 	}
 	return (i);
 }
-
-void	ft_removechar(char	**map, t_list tet, int min_n) // function3
+*/
+void	ft_removechar(char	**map, t_list *tet, int size) // function3
 {
-	int		i;
-	int		j;
+	int 	row;
+	int		col;
 
-	i = 0;
-	j = 0;
-	while(map[i][j])
+	col = tet->x;
+	row = tet->y;
+	while(map[row][col])
 	{
-		if (map[i][j] == tet->alpha)
-			map[i][j] = '.';
-		j = iterate_j(j, min_n);
-		i = iterate_i(i, j);
+		if (map[row][col] == tet->alpha)
+			map[row][col] = '.';
+		col = MOVE_COL(col, size);
+		row = MOVE_ROW(row, col);
 	}
 }
 
-int		ft_validmove(char **map, t_list tet, int i, int j, int min_n) // function4
+int		ft_validmove(char **map, t_list *tet, int row, int col, int size) // function4
 {
 	char	*tmp;
 	int		k;
@@ -53,16 +56,16 @@ int		ft_validmove(char **map, t_list tet, int i, int j, int min_n) // function4
 	k = 0;
 	while (tmp[k])	
 	{
-		if (map[i][j] != '.')
+		if (map[row][col] != '.')
 			return (-1);
-		if (map[i][j] >= tet->alpha)
-			map[i][j] = char(tet->alpha);
-		j = iterate_j(j, min_n);
-		i = iterate_i(i, j)
+		else
+			map[row][col] = (char)(tet->alpha);
+		col = MOVE_COL(col, size);
+		row = MOVE_ROW(row, col);
 		k++;
 		if (tmp[k] == '\n')
 		{
-			i++;
+			row++;
 			k++;
 		}
 	}

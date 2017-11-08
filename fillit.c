@@ -1,4 +1,17 @@
-#include "libft.h" 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fillit.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/08 11:14:58 by cfarnswo          #+#    #+#             */
+/*   Updated: 2017/11/08 11:16:41 by cfarnswo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+#include "fillit.h"
 #include <stdio.h>
 
 char **makemap(int n) // function3
@@ -23,7 +36,7 @@ char **makemap(int n) // function3
 	}
 	return (map); 
 }
-
+/*
 int ft_lstsize(t_list *last) // function2
 {
 	int num;
@@ -32,7 +45,7 @@ int ft_lstsize(t_list *last) // function2
 	printf("lstsize: %d \n", num);
 	return (num);
 }
-
+*/
 int		ft_sqrt(int n)
 {
 	int		i;
@@ -47,8 +60,33 @@ int		ft_sqrt(int n)
 	return (0);
 }
 
+//find first available space functions
+t_list		*find_next_space(char **map, t_list *tet, int size)
+{
+	int		i;
+	int		j;
 
-void fillit(t_list **alst, int min_n, int i, int j) // function 1
+	i = tet->x;
+	j = tet->y;
+	while (map[i][j] != '.')
+	{
+		j = MOVE_COL(j, size);
+		i = MOVE_ROW(i, j);
+	}
+	if (tet->x == j && tet->y == i)
+	{
+		tet->x = MOVE_COL(j, size);
+		tet->y = MOVE_ROW(i, j);
+	}
+	else
+	{
+		tet->x = j;
+		tet->y = i;
+	}
+	return (tet);
+}
+
+void fillit(t_list **alst, int size) // function 1
 {
 	char **map;
 	int mapsize;
@@ -61,12 +99,14 @@ void fillit(t_list **alst, int min_n, int i, int j) // function 1
 	mapsize = min_n; // technically sqrt(4 * lst_size)
 	map = makemap(mapsize);
 
+	ft_validmove(map, *alst, 0, 0, size);
+
 	int i;
 	i = 0;
-	while (i < mapsize) 
+	while (map[i]) 
 	{
-		printf("map[%i]: %s \n", i, map[i]);
-		i++;
+		printf("%s\n", map[i]);
+		++i;
 	}
 
 

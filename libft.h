@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/16 01:43:41 by aho               #+#    #+#             */
-/*   Updated: 2017/11/05 02:06:57 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/08 10:30:21 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,19 +100,11 @@ void    ft_lstappend(t_list **alst, t_list *new);
 int check_buf(char *buf);
 int checkbufchar(char *buf);
 int isvalidpiece(char *buf);
-void fillit(t_list **alst);
+int ft_validmove(char **map, t_list *tet, int i, int j, int min_n);
+void fillit(t_list **alst, int min_n);
 void checkpiece(t_list *link, char **map, int alpha);
 
 t_list      *ft_lstnew(void const *content, size_t content_size, int alpha, int x, int y, int lst_i);
 void    ft_lstiter(t_list *lst, char **map, void (*f)(t_list *elem, char **map, int c));
-
-char *tettrim_str(char *str);
-char **trypiece(char **map, char *piece);
-void *ft_lstlastitem(t_list **alst);
-
-int arr2dlenrow(char **array2d);
-int arr2dlencol(char **array2d);
-
-
 
 #endif
