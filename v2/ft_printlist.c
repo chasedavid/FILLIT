@@ -1,12 +1,12 @@
 #include "libft.h"
 #include <stdio.h>
 
-void ft_printlist(t_list **alst)
+void ft_printlist(t_list *alst)
 {
 	t_list *current; 
 	int i;
 
-	current = (*(alst)); 
+	current = alst; 
 	i = 0;
 	while (current != NULL) 
 	{

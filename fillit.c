@@ -6,7 +6,7 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:14:58 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/08 11:16:41 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/08 11:41:30 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,25 +63,25 @@ int		ft_sqrt(int n)
 //find first available space functions
 t_list		*find_next_space(char **map, t_list *tet, int size)
 {
-	int		i;
-	int		j;
+	int		row;
+	int		col;
 
-	i = tet->x;
-	j = tet->y;
-	while (map[i][j] != '.')
+	col = tet->x;
+	row = tet->y;
+	while (map[row][col] != '.')
 	{
-		j = MOVE_COL(j, size);
-		i = MOVE_ROW(i, j);
+		col = MOVE_COL(col, size);
+		row = MOVE_ROW(row, col);
 	}
-	if (tet->x == j && tet->y == i)
+	if (tet->x == row && tet->y == col)
 	{
-		tet->x = MOVE_COL(j, size);
-		tet->y = MOVE_ROW(i, j);
+		tet->x = MOVE_COL(col, size);
+		tet->y = MOVE_ROW(row, col);
 	}
 	else
 	{
-		tet->x = j;
-		tet->y = i;
+		tet->x = col;
+		tet->y = row;
 	}
 	return (tet);
 }

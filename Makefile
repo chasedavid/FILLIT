@@ -6,7 +6,7 @@
 #    By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:16:37 by cfarnswo          #+#    #+#              #
-#    Updated: 2017/11/07 15:33:06 by cfarnswo         ###   ########.fr        #
+#    Updated: 2017/11/08 21:03:25 by cfarnswo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,7 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-FILES = main.c		\
-		validmove	\
+FILES =	validmove	\
 		fillit		\
 		checkpiece	\
 		checkbufchar\
@@ -30,7 +29,7 @@ all: $(NAME)
 $(NAME):
 	make -C libft/ re
 	$(CC) $(CFLAGS) -c $(SRC) -I libft/ fillit.h
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -L libft/ -lft
+	$(CC) $(CFLAGS) -o $(NAME) main.c $(OBJ) -L libft/ -lft
 
 clean:
 	make -C libft/ fclean

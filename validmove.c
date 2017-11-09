@@ -6,14 +6,15 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/03 14:42:26 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/08 11:21:17 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/08 11:45:22 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "fillit.h"
 
-/*int		iterate_j(int j, int min_n) //function1
+/*
+int		iterate_j(int j, int min_n) //function1
 	{
 		if (++j >= min_n)
 			return (0);
@@ -31,41 +32,43 @@ int		iterate_i(int i, int j) //function2
 	return (i);
 }
 */
-void	ft_removechar(char	**map, t_list *tet, int size) // function3
-{
-	int 	row;
-	int		col;
 
-	col = tet->x;
-	row = tet->y;
-	while(map[row][col])
+void	ft_removechar(char	**map, t_list *tet, int min_n, int i, int j) // function3
+{
+	while(map[i][j])
 	{
-		if (map[row][col] == tet->alpha)
-			map[row][col] = '.';
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
+		if (map[i][j] == tet->alpha)
+			map[i][j] = '.';
+		j = iterate_j(j, min_n);
+		i = iterate_i(i, j);
 	}
 }
 
-int		ft_validmove(char **map, t_list *tet, int row, int col, int size) // function4
+int		ft_validmove(char **map, t_list *tet, int i, int j, int min_n) // function4
 {
 	char	*tmp;
 	int		k;
 
 	tmp = tet->content;
 	k = 0;
+	tet = find_next_space(map, tet, min_n, i, j);
+	i = tet->y;
+	j = tet->x;
 	while (tmp[k])	
 	{
-		if (map[row][col] != '.')
+		if (map[i][j] != '.')
+		{
+			ft_removechar(map, tet, min_n, tet->y, tet->x);
 			return (-1);
+		}
 		else
-			map[row][col] = (char)(tet->alpha);
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
+			map[i][j] = (char)(tet->alpha);
+		j = iterate_j(j, min_n);
+		i = iterate_i(i, j);
 		k++;
 		if (tmp[k] == '\n')
 		{
-			row++;
+			i++;
 			k++;
 		}
 	}
