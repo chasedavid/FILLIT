@@ -6,7 +6,7 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:14:58 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/08 11:41:30 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/09 01:16:54 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,58 +36,20 @@ char **makemap(int n) // function3
 	}
 	return (map); 
 }
-/*
-int ft_lstsize(t_list *last) // function2
-{
-	int num;
-
-	num = (last->alpha) - 64;	
-	printf("lstsize: %d \n", num);
-	return (num);
-}
-*/
-int		ft_sqrt(int n)
-{
-	int		i;
-
-	i = 1;
-	while (i)
-	{
-		if ((i * i) >= n)
-			return (i);
-		++i;
-	}
-	return (0);
-}
-
-//find first available space functions
-t_list		*find_next_space(char **map, t_list *tet, int size)
-{
-	int		row;
-	int		col;
-
-	col = tet->x;
-	row = tet->y;
-	while (map[row][col] != '.')
-	{
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
-	}
-	if (tet->x == row && tet->y == col)
-	{
-		tet->x = MOVE_COL(col, size);
-		tet->y = MOVE_ROW(row, col);
-	}
-	else
-	{
-		tet->x = col;
-		tet->y = row;
-	}
-	return (tet);
-}
 
 void fillit(t_list **alst, int size) // function 1
 {
+
+//make map(pass map in)
+//win check
+//find_next_space
+//if place_piece fail
+//	remove
+//	find next space
+//	place_piece
+//else 
+//	fillit(map, tet_index(tet))
+	
 	char **map;
 	int mapsize;
 	t_list *current; //this is the current piece

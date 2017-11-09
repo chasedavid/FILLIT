@@ -6,7 +6,7 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/03 14:42:26 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/08 11:45:22 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/09 01:03:43 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,42 +33,60 @@ int		iterate_i(int i, int j) //function2
 }
 */
 
-void	ft_removechar(char	**map, t_list *tet, int min_n, int i, int j) // function3
+void	ft_removechar(char	**map, t_list *tet, int size) // function3
 {
-	while(map[i][j])
-	{
-		if (map[i][j] == tet->alpha)
-			map[i][j] = '.';
-		j = iterate_j(j, min_n);
-		i = iterate_i(i, j);
-	}
-}
-
-int		ft_validmove(char **map, t_list *tet, int i, int j, int min_n) // function4
-{
-	char	*tmp;
+	char	*tmp
+	int		row;
+	int		col;
 	int		k;
 
 	tmp = tet->content;
+	col = tet->x;
+	row = tet->y;
 	k = 0;
-	tet = find_next_space(map, tet, min_n, i, j);
-	i = tet->y;
-	j = tet->x;
+	while(tmp[k] && map[row][col])
+	{
+		if (map[row][col] == tet->alpha)
+			map[row][col] = '.';
+		col = MOVE_COL(col, size); 
+		row = MOVE_ROW(row, col);
+		k++;
+		if (tmp[k] == '\n')
+		{
+			row++;
+			col = tet->x;
+			k++;
+		}
+	}
+}
+
+int		ft_validmove(char **map, t_list *tet, int size) // function4
+{
+	char	*tmp;
+	int		k;
+	int		row;
+	int		col;
+
+	tmp = tet->content;
+	k = 0;
+	row = tet->y;
+	col = tet->x;
 	while (tmp[k])	
 	{
 		if (map[i][j] != '.')
 		{
-			ft_removechar(map, tet, min_n, tet->y, tet->x);
+			ft_removechar(map, tet, size);
 			return (-1);
 		}
 		else
 			map[i][j] = (char)(tet->alpha);
-		j = iterate_j(j, min_n);
-		i = iterate_i(i, j);
+		col = MOVE_COL(col, size);
+		row = MOVE_ROW(row, col);
 		k++;
 		if (tmp[k] == '\n')
 		{
-			i++;
+			row++;
+			col = tet->x;
 			k++;
 		}
 	}
