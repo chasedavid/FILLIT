@@ -6,12 +6,12 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:14:58 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 01:16:54 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/09 11:31:45 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "fillit.h"
+include "fillit.h"
 #include <stdio.h>
 
 char **makemap(int n) // function3
