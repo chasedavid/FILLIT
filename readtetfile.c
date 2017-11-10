@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 00:14:44 by aho               #+#    #+#             */
-/*   Updated: 2017/11/09 18:44:12 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/09 19:42:10 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int			readtetfile(char *argv, tet **list)
 
 	alpha = 65;
 	tet_i = 0;
-    if ((fd = open(argv, O_RDONLY)) < 0);
+    if ((fd = open(argv, O_RDONLY)) < 0)
 	{
 		ft_putstr("Error\n");
         return (-1);
@@ -36,7 +36,7 @@ int			readtetfile(char *argv, tet **list)
     {
         buf[ret] = '\0';
         if (isvalidpiece(buf) == 1)
-            ft_lstappend(list, ft_lstnew(buf, (BUF_SIZE + 1), alpha++, tet_i++));
+            ft_tetappend(list, ft_tetnew(buf, (BUF_SIZE + 1), alpha++, tet_i++));
         ret = read(fd, buf, 1);
     }
     if (close(fd) == -1)

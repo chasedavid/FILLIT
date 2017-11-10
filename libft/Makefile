@@ -6,7 +6,7 @@
 #    By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/18 16:43:33 by cfarnswo          #+#    #+#              #
-#    Updated: 2017/11/09 19:03:27 by cfarnswo         ###   ########.fr        #
+#    Updated: 2017/11/09 20:45:22 by cfarnswo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,15 +84,15 @@ OBJ=$(addsuffix .o, $(FILES))
 all: $(NAME)
    
 $(NAME):$(OBJ)
-	ar rcs $(NAME) $(OBJ) 
+	@ar rcs $(NAME) $(OBJ) 
 
 $(OBJ):$(SRC)
-	$(CC) $(CFLAGS) $(SRC)
+	@$(CC) $(CFLAGS) $(SRC)
 
 clean:
-	/bin/rm -rf $(OBJ)
+	@/bin/rm -rf $(OBJ)
 	
 fclean: clean
-	/bin/rm -rf $(NAME)
+	@/bin/rm -rf $(NAME)
 
 re: fclean all 

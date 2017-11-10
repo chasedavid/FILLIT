@@ -6,7 +6,7 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 11:14:09 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 11:29:31 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/09 19:40:38 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,5 @@ void		printmap(char **map, int size)
 
 	row = 0;
 	while (row < size)
-		ft_putstr(map[row++])
+		ft_putstr(map[row++]);
 }

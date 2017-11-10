@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pieceplacement.c                                   :+:      :+:    :+:   */
+/*   placement.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/03 14:42:26 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 11:26:27 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/09 20:40:07 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "fillit.h"
 
-void	ft_removechar(char	**map, t_list *tet, int size) // function3
+void	ft_remove(char	**map, tet *tet, int size)
 {
-	char	*tmp
+	char	*tmp;
 	int		row;
 	int		col;
 	int		k;
@@ -40,7 +39,7 @@ void	ft_removechar(char	**map, t_list *tet, int size) // function3
 	}
 }
 
-int		ft_validmove(char **map, t_list *tet, int size) // function4
+int		ft_place_tet(char **map, tet *tet, int size)
 {
 	char	*tmp;
 	int		k;
@@ -53,13 +52,13 @@ int		ft_validmove(char **map, t_list *tet, int size) // function4
 	col = tet->x;
 	while (tmp[k])	
 	{
-		if (map[i][j] != '.')
+		if (map[row][col] != '.')
 		{
-			ft_removechar(map, tet, size);
+			ft_remove(map, tet, size);
 			return (-1);
 		}
 		else
-			map[i][j] = (char)(tet->alpha);
+			map[row][col] = (char)(tet->alpha);
 		col = MOVE_COL(col, size);
 		row = MOVE_ROW(row, col);
 		k++;

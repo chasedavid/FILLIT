@@ -6,7 +6,7 @@
 #    By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:16:37 by cfarnswo          #+#    #+#              #
-#    Updated: 2017/11/09 19:01:14 by cfarnswo         ###   ########.fr        #
+#    Updated: 2017/11/09 21:09:15 by cfarnswo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ FILES =	placement	\
 		map			\
 		readtetfile \
 		odd_fts		\
+		isvalidpiece \
 
 SRC = $(addsuffix .c, $(FILES))
 OBJ = $(addsuffix .o, $(FILES))
