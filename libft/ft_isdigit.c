@@ -1,38 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 22:09:50 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 11:14:03 by cfarnswo         ###   ########.fr       */
+/*   Created: 2017/09/20 10:58:47 by cfarnswo          #+#    #+#             */
+/*   Updated: 2017/10/16 10:44:03 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-t_list		*find_next_space(char **map, t_list *tet, int size)
+int			ft_isdigit(int c)
 {
-	int 	row;
-	int 	col;
-
-	col = tet->x;
-	row = tet->y;
-	while (map[row][col] != '.')
-	{
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
-	}
-	if (tet->x == row && tet->y == col)
-	{
-		tet->x = MOVE_COL(col, size);
-		tet->y = MOVE_ROW(row, col);
-	}
-	else
-	{
-		tet->x = col;
-		tet->y = row;
-	}
-	return (tet);
+	return ((c >= 48) && (c <= 57));
 }

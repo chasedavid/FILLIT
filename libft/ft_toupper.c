@@ -1,38 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 22:09:50 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 11:14:03 by cfarnswo         ###   ########.fr       */
+/*   Created: 2017/09/20 09:19:54 by cfarnswo          #+#    #+#             */
+/*   Updated: 2017/09/21 10:19:30 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-t_list		*find_next_space(char **map, t_list *tet, int size)
+int			ft_toupper(int c)
 {
-	int 	row;
-	int 	col;
-
-	col = tet->x;
-	row = tet->y;
-	while (map[row][col] != '.')
-	{
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
-	}
-	if (tet->x == row && tet->y == col)
-	{
-		tet->x = MOVE_COL(col, size);
-		tet->y = MOVE_ROW(row, col);
-	}
+	if ((c >= 97) && (c <= 122))
+		return (c - 32);
 	else
-	{
-		tet->x = col;
-		tet->y = row;
-	}
-	return (tet);
+		return (c);
 }

@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 22:09:50 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 11:14:03 by cfarnswo         ###   ########.fr       */
+/*   Created: 2017/09/20 17:28:01 by cfarnswo          #+#    #+#             */
+/*   Updated: 2017/09/21 13:50:39 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*find_next_space(char **map, t_list *tet, int size)
+char		*ft_strdup(const char *s1)
 {
-	int 	row;
-	int 	col;
+	char		*dup;
+	char		*temp;
+	size_t		len;
 
-	col = tet->x;
-	row = tet->y;
-	while (map[row][col] != '.')
-	{
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
-	}
-	if (tet->x == row && tet->y == col)
-	{
-		tet->x = MOVE_COL(col, size);
-		tet->y = MOVE_ROW(row, col);
-	}
-	else
-	{
-		tet->x = col;
-		tet->y = row;
-	}
-	return (tet);
+	len = 0;
+	while (s1[len])
+		++len;
+	dup = (char*)malloc((len + 1));
+	if (!dup)
+		return (NULL);
+	temp = dup;
+	while (*s1)
+		*temp++ = *s1++;
+	*temp = '\0';
+	return (dup);
 }

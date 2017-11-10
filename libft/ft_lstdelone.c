@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 22:09:50 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 11:14:03 by cfarnswo         ###   ########.fr       */
+/*   Created: 2017/10/06 09:24:44 by cfarnswo          #+#    #+#             */
+/*   Updated: 2017/10/16 21:23:44 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*find_next_space(char **map, t_list *tet, int size)
+void		ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
-	int 	row;
-	int 	col;
-
-	col = tet->x;
-	row = tet->y;
-	while (map[row][col] != '.')
-	{
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
-	}
-	if (tet->x == row && tet->y == col)
-	{
-		tet->x = MOVE_COL(col, size);
-		tet->y = MOVE_ROW(row, col);
-	}
-	else
-	{
-		tet->x = col;
-		tet->y = row;
-	}
-	return (tet);
+	if (alst == 0)
+		return ;
+	if (*alst == 0)
+		return ;
+	del(&((*alst)->content), (*alst)->content_size);
+	*alst = NULL;
 }

@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 22:09:50 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 11:14:03 by cfarnswo         ###   ########.fr       */
+/*   Created: 2017/10/01 13:40:40 by cfarnswo          #+#    #+#             */
+/*   Updated: 2017/10/04 09:11:43 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*find_next_space(char **map, t_list *tet, int size)
+void	ft_memdel(void **ap)
 {
-	int 	row;
-	int 	col;
-
-	col = tet->x;
-	row = tet->y;
-	while (map[row][col] != '.')
+	if (ap && *ap)
 	{
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
+		free(*ap);
+		*ap = NULL;
 	}
-	if (tet->x == row && tet->y == col)
-	{
-		tet->x = MOVE_COL(col, size);
-		tet->y = MOVE_ROW(row, col);
-	}
-	else
-	{
-		tet->x = col;
-		tet->y = row;
-	}
-	return (tet);
 }

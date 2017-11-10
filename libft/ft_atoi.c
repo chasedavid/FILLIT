@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 22:09:50 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 11:14:03 by cfarnswo         ###   ########.fr       */
+/*   Created: 2017/09/20 11:33:24 by cfarnswo          #+#    #+#             */
+/*   Updated: 2017/09/30 12:27:29 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*find_next_space(char **map, t_list *tet, int size)
+int			ft_atoi(char const *str)
 {
-	int 	row;
-	int 	col;
+	int		total;
+	int		sign;
+	int		i;
 
-	col = tet->x;
-	row = tet->y;
-	while (map[row][col] != '.')
+	i = 0;
+	sign = 1;
+	total = 0;
+	while (str[0] == '\n' || str[0] == ' ' || str[0] == '\t'
+			|| str[0] == '\v' || str[0] == '\r' || str[0] == '\f')
+		++str;
+	if (str[0] == '+')
+		++str;
+	else if (str[0] == '-')
 	{
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
+		sign = -1;
+		str++;
 	}
-	if (tet->x == row && tet->y == col)
-	{
-		tet->x = MOVE_COL(col, size);
-		tet->y = MOVE_ROW(row, col);
-	}
-	else
-	{
-		tet->x = col;
-		tet->y = row;
-	}
-	return (tet);
+	while ((str[i] >= '0' && str[i] <= '9'))
+		total = total * 10 + (str[i++] - '0');
+	return (sign * total);
 }

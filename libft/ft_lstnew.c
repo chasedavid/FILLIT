@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 22:09:50 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 11:14:03 by cfarnswo         ###   ########.fr       */
+/*   Created: 2017/10/06 07:59:49 by cfarnswo          #+#    #+#             */
+/*   Updated: 2017/10/12 08:34:08 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*find_next_space(char **map, t_list *tet, int size)
+t_list			*ft_lstnew(void const *content, size_t content_size)
 {
-	int 	row;
-	int 	col;
+	t_list		*node;
 
-	col = tet->x;
-	row = tet->y;
-	while (map[row][col] != '.')
+	if (!(node = (t_list *)malloc(sizeof(t_list))))
+		return (NULL);
+	if (content == NULL)
 	{
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
-	}
-	if (tet->x == row && tet->y == col)
-	{
-		tet->x = MOVE_COL(col, size);
-		tet->y = MOVE_ROW(row, col);
+		node->content = NULL;
+		node->content_size = 0;
 	}
 	else
 	{
-		tet->x = col;
-		tet->y = row;
+		if (!(node->content = malloc(content_size)))
+			return (NULL);
+		ft_memcpy((node->content), content, sizeof(content));
+		node->content_size = content_size;
 	}
-	return (tet);
+	node->next = NULL;
+	return (node);
 }

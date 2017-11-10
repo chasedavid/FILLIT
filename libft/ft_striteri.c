@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 22:09:50 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 11:14:03 by cfarnswo         ###   ########.fr       */
+/*   Created: 2017/10/02 09:13:29 by cfarnswo          #+#    #+#             */
+/*   Updated: 2017/10/16 19:27:18 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-t_list		*find_next_space(char **map, t_list *tet, int size)
+void		ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	int 	row;
-	int 	col;
+	int				i;
 
-	col = tet->x;
-	row = tet->y;
-	while (map[row][col] != '.')
+	i = 0;
+	if (s && f)
 	{
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
+		while (*(s + i))
+		{
+			(*f)(i, (s + i));
+			++i;
+		}
 	}
-	if (tet->x == row && tet->y == col)
-	{
-		tet->x = MOVE_COL(col, size);
-		tet->y = MOVE_ROW(row, col);
-	}
-	else
-	{
-		tet->x = col;
-		tet->y = row;
-	}
-	return (tet);
 }

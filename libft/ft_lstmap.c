@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 22:09:50 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 11:14:03 by cfarnswo         ###   ########.fr       */
+/*   Created: 2017/10/09 07:43:07 by cfarnswo          #+#    #+#             */
+/*   Updated: 2017/10/09 10:59:10 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*find_next_space(char **map, t_list *tet, int size)
+t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	int 	row;
-	int 	col;
+	t_list		*head;
+	t_list		*current;
 
-	col = tet->x;
-	row = tet->y;
-	while (map[row][col] != '.')
+	if (!lst)
+		return (NULL);
+	head = (*f)(lst);
+	current = head;
+	while (lst->next)
 	{
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
+		lst = lst->next;
+		if (!(current->next = (*f)(lst)))
+		{
+			free(current->next);
+			return (NULL);
+		}
+		current = current->next;
 	}
-	if (tet->x == row && tet->y == col)
-	{
-		tet->x = MOVE_COL(col, size);
-		tet->y = MOVE_ROW(row, col);
-	}
-	else
-	{
-		tet->x = col;
-		tet->y = row;
-	}
-	return (tet);
+	return (head);
 }

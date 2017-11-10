@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 22:09:50 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 11:14:03 by cfarnswo         ###   ########.fr       */
+/*   Created: 2017/09/27 10:02:54 by cfarnswo          #+#    #+#             */
+/*   Updated: 2017/10/16 10:08:04 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-t_list		*find_next_space(char **map, t_list *tet, int size)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	int 	row;
-	int 	col;
-
-	col = tet->x;
-	row = tet->y;
-	while (map[row][col] != '.')
+	while (*s1 == *s2)
 	{
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
+		++s1;
+		++s2;
+		if (*(s1) != *(s2))
+			return ((unsigned char)*s1 - (unsigned char)*s2);
+		if (!(*s1) && !(*s2))
+			return (0);
+		if (!(*s1) && *s2)
+			return (-(unsigned char)*s2);
 	}
-	if (tet->x == row && tet->y == col)
-	{
-		tet->x = MOVE_COL(col, size);
-		tet->y = MOVE_ROW(row, col);
-	}
-	else
-	{
-		tet->x = col;
-		tet->y = row;
-	}
-	return (tet);
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }

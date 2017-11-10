@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   tetlist.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 01:00:29 by aho               #+#    #+#             */
-/*   Updated: 2017/11/09 12:23:52 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/09 18:49:25 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "fillit.h"
 
-tet			*ft_tetnew(void const *content, size_t content_size, int alpha, int lst_i)
+tet			*ft_tetnew(void const *content, unsigned int content_size, int alpha, int lst_i)
 {
 	tet		*link;
 
@@ -29,7 +30,7 @@ tet			*ft_tetnew(void const *content, size_t content_size, int alpha, int lst_i)
 	return (link);
 }
 
-void		ft_lstappend(tet **alst, tet *new)
+void		ft_tetappend(tet **alst, tet *new)
 {
 	tet		*current;
 	

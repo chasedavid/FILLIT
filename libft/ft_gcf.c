@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   ft_lcm.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 22:09:50 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 11:14:03 by cfarnswo         ###   ########.fr       */
+/*   Created: 2017/10/09 10:24:20 by cfarnswo          #+#    #+#             */
+/*   Updated: 2017/10/09 10:45:18 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-t_list		*find_next_space(char **map, t_list *tet, int size)
+int			ft_gcf(unsigned int a, unsigned int b)
 {
-	int 	row;
-	int 	col;
+	unsigned int		temp;
 
-	col = tet->x;
-	row = tet->y;
-	while (map[row][col] != '.')
+	if (a == 0 || b == 0)
+		return (0);
+	if (b > a)
 	{
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
+		temp = a;
+		a = b;
+		b = temp;
 	}
-	if (tet->x == row && tet->y == col)
+	while (a % b != 0)
 	{
-		tet->x = MOVE_COL(col, size);
-		tet->y = MOVE_ROW(row, col);
+		temp = a % b;
+		a = b;
+		b = temp;
 	}
-	else
-	{
-		tet->x = col;
-		tet->y = row;
-	}
-	return (tet);
+	return (b);
 }

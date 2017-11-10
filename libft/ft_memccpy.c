@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 22:09:50 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 11:14:03 by cfarnswo         ###   ########.fr       */
+/*   Created: 2017/09/27 14:55:36 by cfarnswo          #+#    #+#             */
+/*   Updated: 2017/09/30 12:36:03 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*find_next_space(char **map, t_list *tet, int size)
+void		*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	int 	row;
-	int 	col;
+	unsigned char	*d;
+	unsigned char	*s;
+	size_t			i;
 
-	col = tet->x;
-	row = tet->y;
-	while (map[row][col] != '.')
+	i = 0;
+	d = (unsigned char *)dst;
+	s = (unsigned char *)src;
+	while (i < n)
 	{
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
+		*(d + i) = *(s + i);
+		if (*(s + i) == ((unsigned char)c))
+			return (dst + i + 1);
+		++i;
 	}
-	if (tet->x == row && tet->y == col)
-	{
-		tet->x = MOVE_COL(col, size);
-		tet->y = MOVE_ROW(row, col);
-	}
-	else
-	{
-		tet->x = col;
-		tet->y = row;
-	}
-	return (tet);
+	return (NULL);
 }

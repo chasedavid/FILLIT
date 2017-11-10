@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 22:09:50 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 11:14:03 by cfarnswo         ###   ########.fr       */
+/*   Created: 2017/10/04 09:25:53 by cfarnswo          #+#    #+#             */
+/*   Updated: 2017/10/05 08:29:41 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*find_next_space(char **map, t_list *tet, int size)
+void		ft_putnbr_fd(int n, int fd)
 {
-	int 	row;
-	int 	col;
-
-	col = tet->x;
-	row = tet->y;
-	while (map[row][col] != '.')
+	if (n == -2147483648)
 	{
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
+		write(fd, "-2", 2);
+		ft_putnbr_fd(147483648, fd);
+		return ;
 	}
-	if (tet->x == row && tet->y == col)
+	if (n < 0)
 	{
-		tet->x = MOVE_COL(col, size);
-		tet->y = MOVE_ROW(row, col);
+		ft_putchar_fd('-', fd);
+		n = -n;
 	}
-	else
+	if (n >= 10)
 	{
-		tet->x = col;
-		tet->y = row;
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
 	}
-	return (tet);
+	else if (n < 10)
+		ft_putchar_fd(n + 48, fd);
 }

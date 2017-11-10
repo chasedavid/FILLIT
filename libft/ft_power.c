@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 22:09:50 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 11:14:03 by cfarnswo         ###   ########.fr       */
+/*   Created: 2017/10/09 08:40:07 by cfarnswo          #+#    #+#             */
+/*   Updated: 2017/10/14 17:39:59 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-t_list		*find_next_space(char **map, t_list *tet, int size)
+long double		ft_power(float base, int exp)
 {
-	int 	row;
-	int 	col;
+	double	total;
 
-	col = tet->x;
-	row = tet->y;
-	while (map[row][col] != '.')
+	total = 1;
+	if (exp >= 0)
 	{
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
-	}
-	if (tet->x == row && tet->y == col)
-	{
-		tet->x = MOVE_COL(col, size);
-		tet->y = MOVE_ROW(row, col);
+		while (exp-- > 0)
+			total *= base;
+		return (total);
 	}
 	else
 	{
-		tet->x = col;
-		tet->y = row;
+		while (exp++ < 0)
+			total *= base;
+		return (1 / total);
 	}
-	return (tet);
 }

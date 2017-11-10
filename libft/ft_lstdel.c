@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 22:09:50 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 11:14:03 by cfarnswo         ###   ########.fr       */
+/*   Created: 2017/10/06 10:54:28 by cfarnswo          #+#    #+#             */
+/*   Updated: 2017/10/12 08:27:38 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*find_next_space(char **map, t_list *tet, int size)
+void			ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	int 	row;
-	int 	col;
+	t_list		*current;
 
-	col = tet->x;
-	row = tet->y;
-	while (map[row][col] != '.')
+	while (*alst != NULL)
 	{
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
+		current = *alst;
+		(*del)(current->content, current->content_size);
+		(*alst) = (*alst)->next;
+		free(current);
+		current = NULL;
 	}
-	if (tet->x == row && tet->y == col)
-	{
-		tet->x = MOVE_COL(col, size);
-		tet->y = MOVE_ROW(row, col);
-	}
-	else
-	{
-		tet->x = col;
-		tet->y = row;
-	}
-	return (tet);
+	alst = NULL;
 }

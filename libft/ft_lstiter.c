@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 22:09:50 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 11:14:03 by cfarnswo         ###   ########.fr       */
+/*   Created: 2017/10/07 11:36:46 by cfarnswo          #+#    #+#             */
+/*   Updated: 2017/10/12 07:29:56 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*find_next_space(char **map, t_list *tet, int size)
+void		ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	int 	row;
-	int 	col;
+	t_list	*current;
 
-	col = tet->x;
-	row = tet->y;
-	while (map[row][col] != '.')
+	current = lst;
+	while (current != NULL)
 	{
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
+		(*f)(current);
+		current = current->next;
 	}
-	if (tet->x == row && tet->y == col)
-	{
-		tet->x = MOVE_COL(col, size);
-		tet->y = MOVE_ROW(row, col);
-	}
-	else
-	{
-		tet->x = col;
-		tet->y = row;
-	}
-	return (tet);
 }

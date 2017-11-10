@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 22:09:50 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 11:14:03 by cfarnswo         ###   ########.fr       */
+/*   Created: 2017/09/21 10:22:29 by cfarnswo          #+#    #+#             */
+/*   Updated: 2017/09/21 13:08:10 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*find_next_space(char **map, t_list *tet, int size)
+char		*ft_strncpy(char *dst, char *src, size_t len)
 {
-	int 	row;
-	int 	col;
+	char *ptr;
 
-	col = tet->x;
-	row = tet->y;
-	while (map[row][col] != '.')
+	ptr = dst;
+	while (len > 0 && *src != '\0')
 	{
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
+		*dst++ = *src++;
+		--len;
 	}
-	if (tet->x == row && tet->y == col)
+	while (len > 0)
 	{
-		tet->x = MOVE_COL(col, size);
-		tet->y = MOVE_ROW(row, col);
+		*dst = '\0';
+		--len;
+		++dst;
 	}
-	else
-	{
-		tet->x = col;
-		tet->y = row;
-	}
-	return (tet);
+	dst = ptr;
+	return (dst);
 }

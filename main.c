@@ -1,70 +1,54 @@
-#include <sys/types.h> 
-#include <sys/stat.h> 
-#include <fcntl.h>
-#include "libft.h" 
-#define BUF_SIZE 20
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/06 00:15:08 by aho               #+#    #+#             */
+/*   Updated: 2017/11/09 18:38:29 by cfarnswo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h" 
+#include "fillit.h"
 
 int main(int argc, char **argv)
 {
-	int fd;
-	int ret;
-	char buf[BUF_SIZE];
-	t_list *linked_list;
-	int alpha;
-	int lst_i; 
+	tet		*tetlist;
+	char	**map; 
+	int		size;
 
-	lst_i = 0;
-	linked_list = ft_memalloc(sizeof(t_list));
-	alpha = 65;
+	tetlist = ft_memalloc(sizeof(tet));
+	map = NULL;
+	mapsize = 0;
 	if (argc != 2) 
-		ft_putstr("Incorrect number of arguments \n");
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1) 
+		ft_putstr("Error\n");
+	if (argc == 2)
 	{
-		ft_putstr("open() failed \n");
-		return (1);
+		if ((size = readtetfile(argv[1], &tetlist)) < 0);
+			return (-1);	
+		size = ft_sqrt(4 *size);
+		map = makemap(void);
+//		printf("\n------ start print initial list ----------\n");
+		//ft_printlist(&tetlist);
+//		printf("------ end print initial list ------------\n");
+
+//		trimpieces(tetlist);
+		//ft_lstiter(tetlist, trimpiece);
+
+//		printf("\n------ start print list after ft_lstiter----------\n");
+//		ft_printlist(&tetlist);
+//		printf("------------------- end --------------------------\n");
+
+
+//		fillit(map, tetlist->next, xy, mapsize);
+//		fillit(map, tetlist->next, xy, mapsize);
 	}
-
-	while ((ret = read(fd, buf, BUF_SIZE)))		
-//	while ((ret = read(fd, buf, BUF_SIZE)) > 21)		
-//	while ((ret = read(fd, buf + bufdone, BUF_SIZE - bufdone)) > 21)	
-	{
-		buf[ret] = '\0';
-//		check_buf(buf);
-		if (isvalidpiece(buf) == 1)
-		{
-			ft_lstappend(&linked_list, ft_lstnew(buf, 21, alpha, 0, 0, lst_i));
-			alpha++;
-			lst_i++;
-		}
-		ret = read(fd, buf, 1);
-	}
-
-//	while ((ret = read(fd, buf, BUF_SIZE)) > 20) 
-//	{
-//		buf[ret] = '\n';
-//		buf[ret + 1] = '\0';
-//		if (isvalidpiece(buf) == 1)
-//		{
-//			ft_lstappend(&linked_list, ft_lstnew(buf, 21, alpha));
-//			alpha++; 
-//		}
-//	}
-
-	ft_putstr("file opened: ");	
-	ft_putnbr(fd);
-	ft_putchar('\n');
-
-	fillit(&linked_list);
-//	ft_printlist(&linked_list);
-
-	if (close(fd) == -1)
-	{
-		ft_putstr("close() failed \n");
-		return (1);
-	}
+//	fillit(&linked_list);
+//	ft_printlist(&tetlist);
+//	ft_printlistitem(tetlist->next);
+	printf("\n----- final map result ------ \n");
+	printmap(map, size);
 	return (0);
 }
-

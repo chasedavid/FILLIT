@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 22:09:50 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/09 11:14:03 by cfarnswo         ###   ########.fr       */
+/*   Created: 2017/10/05 10:35:31 by cfarnswo          #+#    #+#             */
+/*   Updated: 2017/10/16 20:12:58 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*find_next_space(char **map, t_list *tet, int size)
+char		*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int 	row;
-	int 	col;
+	char	*mem;
+	int		i;
 
-	col = tet->x;
-	row = tet->y;
-	while (map[row][col] != '.')
+	i = 0;
+	if (s && f)
 	{
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
+		if (!(mem = (char *)malloc((ft_strlen(s) + 1) * sizeof(char))))
+			return (NULL);
+		while (s[i])
+		{
+			mem[i] = (*f)(i, s[i]);
+			++i;
+		}
+		mem[i] = '\0';
+		return (mem);
 	}
-	if (tet->x == row && tet->y == col)
-	{
-		tet->x = MOVE_COL(col, size);
-		tet->y = MOVE_ROW(row, col);
-	}
-	else
-	{
-		tet->x = col;
-		tet->y = row;
-	}
-	return (tet);
+	return (NULL);
 }
