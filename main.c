@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 00:15:08 by aho               #+#    #+#             */
-/*   Updated: 2017/11/09 21:05:55 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/11 16:49:43 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 {
 	tet		*tetlist;
 	char	**map; 
-	int		size;
+	int		size = 0;
 
 	tetlist = ft_memalloc(sizeof(tet));
 	map = NULL;
@@ -28,6 +28,11 @@ int main(int argc, char **argv)
 		return (-1);
 	}
 	size = readtetfile(argv[1], &tetlist);
+	if (size == -1)
+	{
+		ft_putstr("Error");
+		return (-1);
+	}
 	size = ft_sqrt(4 *size);
 	map = makemap();
 //		printf("\n------ start print initial list ----------\n");
@@ -42,7 +47,9 @@ int main(int argc, char **argv)
 
 //	fillit(&linked_list);
 //	ft_printlist(&tetlist);
-	printf("\n----- final map result ------ \n");
+	ft_putstr("\n----- final map result ------ \n");
+	ft_putnbr(size);
+	ft_putchar('\n');
 	printmap(map, size);
 	return (0);
 }
