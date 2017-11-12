@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 00:14:44 by aho               #+#    #+#             */
-/*   Updated: 2017/11/09 19:42:10 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/11 16:39:02 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ int			readtetfile(char *argv, tet **list)
     while ((ret = read(fd, buf, BUF_SIZE)))
     {
         buf[ret] = '\0';
-        if (isvalidpiece(buf) == 1)
+		if (isvalidpiece(buf) == 1)
             ft_tetappend(list, ft_tetnew(buf, (BUF_SIZE + 1), alpha++, tet_i++));
-        ret = read(fd, buf, 1);
+		ret = read(fd, buf, 1);
     }
     if (close(fd) == -1)
     {
         ft_putstr("Error\n");
         return (-1);
     }
-	return (++tet_i - 64);
+	return (tet_i);
 }
