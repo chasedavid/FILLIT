@@ -6,7 +6,7 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 11:14:09 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/11 16:47:30 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/11 18:33:01 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,16 @@ void		resetmap(char **map, int size)
 void		printmap(char **map, int size)
 {
 	int		row;
-	int		i;
+	int		col;
 
 	row = 0;
 	while (row < size)
 	{
-		i = 0;
-		while (i < size)
-			ft_putchar(map[row][i++]);
+		col = 0;
+		while (col < size)
+			ft_putchar(map[row][col++]);
 		ft_putchar('\n');
-		row++;
+		++row;
 	}
 }
 
