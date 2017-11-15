@@ -107,7 +107,7 @@ int 		skipxy(t_coord xy, int mapsize)
 }
 
 
- 
+
 int checkxy(char **map, char *piece, t_coord xy)
 {
 //	printf("\n>>>>>>>>>>>>>>>>>>> checkxy() function <<<<<<<<<<<<<<<<<<<<<<<<<<<\n");

@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlastitem.c                                   :+:      :+:    :+:   */
+/*   validmove.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/04 19:20:38 by aho               #+#    #+#             */
-/*   Updated: 2017/11/14 16:45:09 by aho              ###   ########.fr       */
+/*   Created: 2017/11/08 18:46:35 by aho               #+#    #+#             */
+/*   Updated: 2017/11/08 18:46:35 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-
-void *ft_lstlastitem(t_list **alst)
+//valid move means piece has been placed on the map
+int validmove(char **map, t_list *piece, t_coord xy)
 {
-	t_list *current;
-	t_list *last;
-	current = (*(alst));
-	while (current->next != NULL) 
-		current = current->next; 
-	last = current;
-	return (last);
+	//if checkxy == 1 that means 
+
+	
+
+
+
+
+
+
+
+
+
+
 }

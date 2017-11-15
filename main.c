@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 00:15:08 by aho               #+#    #+#             */
-/*   Updated: 2017/11/11 18:55:35 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/14 16:44:14 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@ int main(int argc, char **argv)
 		//ft_printlist(&tetlist);
 //		printf("------ end print initial list ------------\n");
 
-//		trimpieces(tetlist);
+	trimpieces(tetlist);
 
-//		printf("\n------ start print list after ft_lstiter----------\n");
-//		ft_printlist(&tetlist);
-//		printf("------------------- end --------------------------\n");
+	printf("\n------ start print list after ft_lstiter----------\n");
+	ft_printlist(&tetlist);
+	printf("------------------- end --------------------------\n");
 
 //	fillit(&linked_list);
 //	ft_printlist(&tetlist);
-	fillit(map, tetlist, size);
+//	fillit(map, tetlist, size);
 	ft_putstr("\n----- final map result ------ \n");
 	ft_putnbr(size);
 	ft_putchar('\n');
