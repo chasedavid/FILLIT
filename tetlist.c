@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 01:00:29 by aho               #+#    #+#             */
-/*   Updated: 2017/11/14 20:02:26 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/15 12:39:14 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void		ft_tetappend(tet **alst, tet *new)
 	current->next->next = NULL;
 }
 
-void ft_printtetlist(tet **alst)
+void 		ft_printtetlist(tet **alst)
 {
-    tet *current;
-    int i;
+    tet 	*current;
+    int 	i;
 
     current = (*(alst));
     i = 0;
@@ -64,4 +64,16 @@ void ft_printtetlist(tet **alst)
         current = current->next;
         i++;
     }
+}
+
+void		*ft_lstlastitem(tet **alst)
+{
+    tet		*current;
+    tet		*last;
+
+    current = (*(alst));
+    while (current->next != NULL)
+        current = current->next;
+    last = current;
+    return (last);
 }
