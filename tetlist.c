@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 01:00:29 by aho               #+#    #+#             */
-/*   Updated: 2017/11/15 12:39:14 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/15 13:14:50 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void 		ft_printtetlist(tet **alst)
     i = 0;
     while (current != NULL)
     {
-        printf("\n-----------------\n");
+        printf("-----------------\n");
         printf("Linked List: %d\n", i);
         printf("-----------------\n");
         printf("current->content:\n%s\n", current->content);

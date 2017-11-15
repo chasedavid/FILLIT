@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 00:15:08 by aho               #+#    #+#             */
-/*   Updated: 2017/11/14 22:49:21 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/15 12:58:59 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,22 @@ int			main(int argc, char **argv)
 	map = NULL;
 	if (argc != 2) 
 	{	
-		ft_putstr("Error\n");
+		ft_putstr("error\n");
 		return (-1);
 	}
 	size = readtetfile(argv[1], &tetlist);
 	if (size == -1)
 	{
-		ft_putstr("Error");
+		ft_putstr("error\n");
 		return (-1);
 	}
 	size = ft_sqrt(4 *size);
 	map = makemap();
 	trimpieces(tetlist);
 
-	printf("\n------ start print list after ft_lstiter----------\n");
+	printf("\n------ print list after trimming pieces ----------\n");
 	ft_printtetlist(&tetlist);
-	printf("------------------- end --------------------------\n");
+	printf("----------------------------------------------------\n");
 
 //	fillit(map, tetlist, size);
 

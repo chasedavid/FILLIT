@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 12:26:45 by aho               #+#    #+#             */
-/*   Updated: 2017/11/15 12:36:22 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/15 13:17:46 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,15 @@ int         hashneighborcheck(char *buf, int i)
 	return (-1);
 }
 
-int validatebuf(char *buf)
+int			isvalidpiece(char *buf)
 {
-	int i;
-	int spaces;
-	int hashes;
+	int		i;
+	int		spaces;
+	int		hashes;
 
 	i = 0; 
 	hashes = 0;
+//	printf("buf:\n%s \n", buf);
 	while (buf[i] != '\0')
 	{
 		while (buf[i] != '#' && hashes == 0)
@@ -74,7 +75,8 @@ int validatebuf(char *buf)
 				return (-1);
 			spaces--;
 		}
-		if (hashneighborcheck(buf, i) == -1)
+//		printf("hashneighborcheck result: %d, i: %d \n", hashneighborcheck(buf, i), i);
+		if (buf[i] == '#' && hashneighborcheck(buf, i) == -1)
             return (-1);
 		i++;
 	}
