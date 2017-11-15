@@ -6,7 +6,7 @@
 #    By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:16:37 by cfarnswo          #+#    #+#              #
-#    Updated: 2017/11/09 21:09:15 by cfarnswo         ###   ########.fr        #
+#    Updated: 2017/11/14 20:23:24 by aho              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ FILES =	placement	\
 		map			\
 		readtetfile \
 		odd_fts		\
-		isvalidpiece \
+		isvalidpiece\
+		trimtets	\
 
 SRC = $(addsuffix .c, $(FILES))
 OBJ = $(addsuffix .o, $(FILES))
@@ -42,5 +43,6 @@ clean:
 fclean: clean
 	make -C libft/ fclean
 	/bin/rm -f $(NAME)
+	/bin/rm -f *.c~ *.h~
 
 re: fclean all

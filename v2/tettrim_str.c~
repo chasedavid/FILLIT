@@ -1,5 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tettrim_str.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/07 00:36:32 by aho               #+#    #+#             */
+/*   Updated: 2017/11/07 00:41:24 by aho              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdio.h> 
+
+char *ft_strsub_free(char *str, int col, int n) 
+{
+	char *orig;
+	char *new;
+
+	orig = str;
+	new = ft_strsub(str, col, n);
+	free(orig);
+	return (new);
+}
 
 char *trimrows(char *str)
 {
@@ -19,7 +41,7 @@ char *trimrows(char *str)
 		if (spaces == 4 && hashes == 0) 
 		{
 			len = len - 4;
-			str = ft_strsub(str, i + 2, len);
+			str = ft_strsub_free(str, i + 2, len);
 			spaces = 0;
 			i = -1;
 		}
@@ -32,7 +54,7 @@ char *trimrows(char *str)
 		{
 			while (str[i] != '\n') 
 				i++;
-			str = ft_strsub(str, 0, i + 1);
+			str = ft_strsub_free(str, 0, i + 1);
 			return (str);
 		}
 		i++;
@@ -51,7 +73,7 @@ char	*t_deletecol(char *str, int col, int n)
 	j = 0;
 	len = ft_strlen(str);
 	//malloc space for new string
-	if (!(trim = malloc(ft_strlen(str) - 4)))
+	if (!(trim = malloc(ft_strlen(str) - 1)))
 		return (NULL);
 	//iterate through and copy str to malloc
 	while (i < len)
@@ -60,7 +82,7 @@ char	*t_deletecol(char *str, int col, int n)
 			i++;
 		else
     		trim[j++] = str[i++];
-	} 
+	}
 	trim[j] = '\0';
 	free(str);
 	return (trim);
@@ -97,7 +119,7 @@ char *trimcols(char *str)
 		else
 			i = col;
 	}
-	free(str);
+	//free(str);
 	return (str);
 }
 

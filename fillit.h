@@ -6,7 +6,7 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:37:24 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/11 18:55:07 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/14 19:58:23 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,17 @@ typedef struct		tet
 int		readtetfile(char *argv, tet **list);
 tet		*ft_tetnew(void const *content, unsigned int content_size, int alpha, int list_i);
 void	ft_tetappend(tet **alst, tet *new);
+void 	ft_printtetlist(tet **alst);
 int		isvalidpiece(char *buf);
+
+//trimming functions
+char	*ft_strsub_free(char *str, int col, int n);
+void	trimpieces(tet *list);
+char	*tettrim(char *str);
+char    *t_deletecol(char *str, int col, int n);
+char	*trimcols(char *str);
+char	*trimrows(char *str);
+
 
 char	*tetrim(char *str);
 //map functions

@@ -6,12 +6,13 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 01:00:29 by aho               #+#    #+#             */
-/*   Updated: 2017/11/09 20:55:06 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/14 20:02:26 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft/libft.h"
 #include "fillit.h"
+#include <stdio.h>
 
 tet			*ft_tetnew(void const *content, unsigned int content_size, int alpha, int lst_i)
 {
@@ -40,4 +41,27 @@ void		ft_tetappend(tet **alst, tet *new)
 		current = current->next;
 	current->next = new;
 	current->next->next = NULL;
+}
+
+void ft_printtetlist(tet **alst)
+{
+    tet *current;
+    int i;
+
+    current = (*(alst));
+    i = 0;
+    while (current != NULL)
+    {
+        printf("\n-----------------\n");
+        printf("Linked List: %d\n", i);
+        printf("-----------------\n");
+        printf("current->content:\n%s\n", current->content);
+        printf("current->alpha: %c \n", current->alpha);
+        if (current->next == NULL)
+            printf("current->next is NULL\n");
+        else
+            printf("current->next->content:\n%s \n", current->next->content);
+        current = current->next;
+        i++;
+    }
 }
