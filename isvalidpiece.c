@@ -28,6 +28,7 @@ int isvalidpiece(char *buf)
 			if (hashes == 1) 
 			{
 				//check for neighboring hash
+				
 			}
 			if (hashes > 4)
 			{
