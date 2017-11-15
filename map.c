@@ -6,11 +6,11 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 11:14:09 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/11 18:33:01 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/14 16:51:00 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft/libft.h"
 
 char		**makemap(void)
 {

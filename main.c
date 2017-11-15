@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 00:15:08 by aho               #+#    #+#             */
-/*   Updated: 2017/11/14 16:44:14 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/14 20:18:55 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "fillit.h"
 #include <stdio.h>
 
-int main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	tet		*tetlist;
 	char	**map; 
@@ -35,19 +35,14 @@ int main(int argc, char **argv)
 	}
 	size = ft_sqrt(4 *size);
 	map = makemap();
-//		printf("\n------ start print initial list ----------\n");
-		//ft_printlist(&tetlist);
-//		printf("------ end print initial list ------------\n");
-
 	trimpieces(tetlist);
 
 	printf("\n------ start print list after ft_lstiter----------\n");
-	ft_printlist(&tetlist);
+	ft_printtetlist(&tetlist);
 	printf("------------------- end --------------------------\n");
 
-//	fillit(&linked_list);
-//	ft_printlist(&tetlist);
-//	fillit(map, tetlist, size);
+	fillit(map, tetlist, size);
+
 	ft_putstr("\n----- final map result ------ \n");
 	ft_putnbr(size);
 	ft_putchar('\n');

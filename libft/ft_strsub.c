@@ -3,34 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/02 10:13:30 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/10/16 20:05:11 by cfarnswo         ###   ########.fr       */
+/*   Created: 2017/10/04 00:56:56 by aho               #+#    #+#             */
+/*   Updated: 2017/10/15 01:07:21 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strsub(char const *s, unsigned int start, size_t len)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*mem;
-	char	*first;
-	size_t	i;
+	int		i;
+	char	*str;
+	char	*substr;
 
 	i = 0;
-	if (s)
+	str = (char*)s;
+	substr = ft_memalloc(len + 1);
+	if (substr == NULL)
+		return (NULL);
+	if (!s)
+		return (NULL);
+	while (len > 0)
 	{
-		first = (char *)(s + start);
-		if (!(mem = (char *)malloc((len + 1) * sizeof(char))))
-			return (NULL);
-		while (len-- && s[i])
-		{
-			mem[i] = (char)first[i];
-			++i;
-		}
-		mem[i] = '\0';
-		return (mem);
+		substr[i] = str[start];
+		i++;
+		start++;
+		len--;
 	}
-	return (NULL);
+	substr[i] = '\0';
+	return (substr);
 }
