@@ -6,11 +6,12 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/03 14:42:26 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/15 16:35:21 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/15 17:45:53 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
 void		ft_remove(char	**map, tet *tet, int size)
 {
@@ -50,7 +51,8 @@ int			ft_place_tet(char **map, tet *tet, int size)
 	k = 0;
 	row = tet->y;
 	col = tet->x;
-	while (tmp[k])	
+
+	while (tmp[k])
 	{
 		if (map[row][col] != '.')
 		{
@@ -62,6 +64,7 @@ int			ft_place_tet(char **map, tet *tet, int size)
 		col = MOVE_COL(col, size);
 		row = MOVE_ROW(row, col);
 		k++;
+
 		if (tmp[k] == '.')
 		{
 			col = MOVE_COL(col, size);
@@ -74,6 +77,7 @@ int			ft_place_tet(char **map, tet *tet, int size)
 			col = tet->x;
 			k++;
 		}
+		printf("ft_placetet: printing map \n");
 		printmap(map, size);
 	}
 	return (0);

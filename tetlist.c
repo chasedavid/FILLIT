@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 01:00:29 by aho               #+#    #+#             */
-/*   Updated: 2017/11/15 13:14:50 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/15 17:42:20 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,15 @@ void		ft_tetappend(tet **alst, tet *new)
 	tet		*current;
 	
 	current = (*(alst));
-	while (current->next != NULL)
-		current = current->next;
-	current->next = new;
-	current->next->next = NULL;
+	if (current->content == NULL)
+		*alst = new;
+	else
+	{
+		while (current->next != NULL)
+			current = current->next;
+		current->next = new;
+		current->next->next = NULL;
+	}
 }
 
 void 		ft_printtetlist(tet **alst)
