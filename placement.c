@@ -57,6 +57,7 @@ int			ft_place_tet(char **map, tet *tet, int size)
 		if (map[row][col] != '.')
 		{
 			ft_remove(map, tet, size);
+			printf("ft_placetet: return -1 \n");
 			return (-1);
 		}
 		else
@@ -80,6 +81,7 @@ int			ft_place_tet(char **map, tet *tet, int size)
 		printf("ft_placetet: printing map \n");
 		printmap(map, size);
 	}
+	printf("ft_placetet: return 0 \n");
 	return (0);
 }
 

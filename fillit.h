@@ -32,7 +32,8 @@ int		readtetfile(char *argv, tet **list);
 tet		*ft_tetnew(void const *content, unsigned int content_size, int alpha, int list_i);
 void	ft_tetappend(tet **alst, tet *new);
 void 	ft_printtetlist(tet **alst);
-int		isvalidpiece(char *buf);
+int		validhashes(char *buf);
+int     validchars(char *buf);
 
 //trimming functions
 char	*ft_strsub_free(char *str, int col, int n);

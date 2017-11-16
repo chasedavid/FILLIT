@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 00:14:44 by aho               #+#    #+#             */
-/*   Updated: 2017/11/15 12:58:24 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/16 00:13:05 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <stdio.h>
 #define BUF_SIZE 20
 
 int			readtetfile(char *argv, tet **list)
@@ -35,10 +36,13 @@ int			readtetfile(char *argv, tet **list)
     while ((ret = read(fd, buf, BUF_SIZE)))
     {
         buf[ret] = '\0';
-		if (isvalidpiece(buf) == 1)
+		if (validchars(buf) == 1 && validhashes(buf) == 1 && alpha < 91)
             ft_tetappend(list, ft_tetnew(buf, (BUF_SIZE + 1), alpha++, tet_i++));
-		if (isvalidpiece(buf) == -1) 
-			return (-1);
+		else
+		{
+			printf("invalid piece detected - see buf below:\n%s \n", buf);
+//			return (-1);
+		}
 		ret = read(fd, buf, 1);
     }
     if (close(fd) == -1)
