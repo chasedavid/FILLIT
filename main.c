@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 00:15:08 by aho               #+#    #+#             */
-/*   Updated: 2017/11/15 12:58:59 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/15 16:37:51 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			main(int argc, char **argv)
 	ft_printtetlist(&tetlist);
 	printf("----------------------------------------------------\n");
 
-//	fillit(map, tetlist, size);
+	fillit(map, tetlist, size);
 
 	ft_putstr("\n----- final map result ------ \n");
 	ft_putnbr(size);

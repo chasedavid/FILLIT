@@ -6,7 +6,7 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/03 14:42:26 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/11 18:55:37 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/15 16:35:21 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,19 @@ int			ft_place_tet(char **map, tet *tet, int size)
 		col = MOVE_COL(col, size);
 		row = MOVE_ROW(row, col);
 		k++;
+		if (tmp[k] == '.')
+		{
+			col = MOVE_COL(col, size);
+			row = MOVE_ROW(row, col);
+			++k;
+		}
 		if (tmp[k] == '\n')
 		{
 			row++;
 			col = tet->x;
 			k++;
 		}
+		printmap(map, size);
 	}
 	return (0);
 }
