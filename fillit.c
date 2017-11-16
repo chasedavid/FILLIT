@@ -6,7 +6,7 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:14:58 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/14 16:44:50 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/15 23:16:36 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void fillit(char **map, tet *alst, int size) // function 1
 {
 
 //win check
-	if (alst->next == NULL && (alst->y < size))
+	printf("---- beginning of fillit ----\n");
+//	printf("alst->alpha: %c \n", alst->alpha);
+//	printf("alst->y: %d \n", alst->y);
+	if (alst->next == NULL)
 	{
 		if (ft_place_tet(map, alst, size) != -1)
 			return ;
