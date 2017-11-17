@@ -7,6 +7,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:37:24 by cfarnswo          #+#    #+#             */
 /*   Updated: 2017/11/16 02:09:49 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/16 18:44:36 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +63,7 @@ char	**trypiece(char **map, char *piece);
 int		ft_sqrt(int n);
 tet		*find_next_space(char **map, tet *tet, int size);
 void	ft_remove(char **map, tet *tet, int size);
-void	fillit(char **map, tet *alst, int size);
+void	fillit(char **map, tet *alst, int size, tet *startover);
 int		ft_place_tet(char **map, tet *tet, int size);
-void	ft_place_first(char **map, tet *tet, int size);
+char	**ft_place_first(char **map, tet *tet, int size);
 #endif
