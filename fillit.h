@@ -6,7 +6,7 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:37:24 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/16 00:01:34 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/16 02:09:49 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ typedef struct		tet
 	int				lst_i;
 	struct tet		*next;
 }					tet;
+
+typedef struct		coord
+{
+	int				x;
+	int				y;
+}					coord;
 
 //reading/ parsing functions
 int		readtetfile(char *argv, tet **list);
