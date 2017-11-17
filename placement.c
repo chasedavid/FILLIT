@@ -6,7 +6,7 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/03 14:42:26 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/16 00:02:59 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/16 18:40:27 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int			ft_place_tet(char **map, tet *tet, int size)
 	return (0);
 }
 
-void		ft_place_first(char **map, tet *tet, int size)
+char		**ft_place_first(char **map, tet *tet, int size)
 {
 	int		k;
 	int		col;
@@ -103,6 +103,7 @@ void		ft_place_first(char **map, tet *tet, int size)
 		if ((tet->content)[k] == '\n')
 		{
 			++row;
+			col = tet->x;
 			++k;
 		}
 		if ((tet->content)[k] == '.')
@@ -112,4 +113,5 @@ void		ft_place_first(char **map, tet *tet, int size)
 			++k;
 		}
 	}
+	return (map);
 }

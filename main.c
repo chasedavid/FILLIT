@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 00:15:08 by aho               #+#    #+#             */
-/*   Updated: 2017/11/15 22:09:33 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/16 18:46:12 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 int			main(int argc, char **argv)
 {
 	tet		*tetlist;
+	tet		*startover;
 	char	**map; 
 	int		size;
 
@@ -37,13 +38,14 @@ int			main(int argc, char **argv)
 	size = ft_sqrt(4 *size);
 	map = makemap();
 	trimpieces(tetlist);
-
+	startover = tetlist;
 	printf("\n------ print list after trimming pieces ----------\n");
 	ft_printtetlist(&tetlist);
 	printf("----------------------------------------------------\n");
 
-	fillit(map, tetlist, size);
-
+	//ft_place_first(map, tetlist, size);
+	fillit(ft_place_first(map, tetlist, size), tetlist->next, size, startover);
+	
 	ft_putstr("\n----- final map result ------ \n");
 	ft_putnbr(size);
 	ft_putchar('\n');
