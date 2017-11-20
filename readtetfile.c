@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 00:14:44 by aho               #+#    #+#             */
-/*   Updated: 2017/11/16 00:13:05 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/18 15:41:11 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <stdio.h>
 #define BUF_SIZE 20
 
-int			readtetfile(char *argv, tet **list)
+int			readtetfile(char *argv, t_tet **list)
 {
     int		fd;
     int		ret;

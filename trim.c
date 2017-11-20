@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   trimtets.c                                         :+:      :+:    :+:   */
+/*   trim.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:52:22 by aho               #+#    #+#             */
-/*   Updated: 2017/11/14 20:01:54 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/18 15:35:05 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,9 @@ char		*tettrim(char *str)
 	return (str); 
 }
 
-void		trimpieces(tet *list)
+void		trimpieces(t_tet *list)
 {
-    tet		*current;
+    t_tet		*current;
 
     current = list;
     while (current != NULL)

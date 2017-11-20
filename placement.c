@@ -6,32 +6,31 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/03 14:42:26 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/16 18:40:27 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/20 09:34:15 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include "libft.h"
 #include <stdio.h>
 
-void		ft_remove(char	**map, tet *tet, int size)
+void		ft_remove(char	**map, t_tet *tet, int size)
 {
-	char	*tmp;
 	int		row;
 	int		col;
 	int		k;
 
-	tmp = tet->content;
 	col = tet->x;
 	row = tet->y;
 	k = 0;
-	while(tmp[k] && map[row][col])
+	while((tet->content)[k] && map[row][col])
 	{
 		if (map[row][col] == tet->alpha)
 			map[row][col] = '.';
 		col = MOVE_COL(col, size); 
 		row = MOVE_ROW(row, col);
 		k++;
-		if (tmp[k] == '\n')
+		if ((tet->content)[k] == '\n')
 		{
 			row++;
 			col = tet->x;
@@ -40,52 +39,71 @@ void		ft_remove(char	**map, tet *tet, int size)
 	}
 }
 
-int			ft_place_tet(char **map, tet *tet, int size)
+int			check_up_left(char **map, t_tet *tet, int row, int col)
 {
-	char	*tmp;
+	if (col == tet->x && row == tet->y)
+		return (1);
+	if (row ==  0)
+		if (col == 0 || (map[row][col - 1] == (tet->alpha)))
+			return (1);
+	if (row != 0)
+	{
+		if (col == 0)
+			if (map[row - 1][col] == (tet->alpha))
+				return (1);
+		if (col != 0)
+			if (map[row][col - 1] == (tet->alpha) || map[row - 1][col] == (tet->alpha))
+				return (1);
+	}
+	return (0);
+}
+
+int			ft_place_tet(char **map, t_tet *tet, int size)
+{
 	int		k;
 	int		row;
 	int		col;
 
-	tmp = tet->content;
 	k = 0;
 	row = tet->y;
 	col = tet->x;
 
-	while (tmp[k])
+	while ((tet->content)[k] && col < size && row < size)
 	{
-		if (map[row][col] != '.')
+		if (map[row][col] != '.' || (check_up_left(map, tet, row, col) != 1))
 		{
+			printf("IF CHECK: %d", map[row][col] != '.');
 			ft_remove(map, tet, size);
-			printf("ft_placetet: return -1 \n");
 			return (-1);
 		}
 		else
+		{
 			map[row][col] = (char)(tet->alpha);
-		col = MOVE_COL(col, size);
-		row = MOVE_ROW(row, col);
-		k++;
-
-		if (tmp[k] == '.')
+			col = MOVE_COL(col, size);
+			row = MOVE_ROW(row, col);
+			++k;
+		}
+		if ((tet->content)[k] == '.')
 		{
 			col = MOVE_COL(col, size);
 			row = MOVE_ROW(row, col);
 			++k;
 		}
-		if (tmp[k] == '\n')
+		if ((tet->content)[k] == '\n')
 		{
-			++row;
+			if (col != 0)
+				++row;
 			col = tet->x;
 			++k;
 		}
-		printf("ft_placetet: printing map \n");
 		printmap(map, size);
 	}
-	printf("ft_placetet: return 0 \n");
+	ft_putstr("---End of placing tet---\n");
+//	printmap(map, size);
 	return (0);
 }
 
-char		**ft_place_first(char **map, tet *tet, int size)
+char		**ft_place_first(char **map, t_tet *tet, int size)
 {
 	int		k;
 	int		col;

@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 00:15:08 by aho               #+#    #+#             */
-/*   Updated: 2017/11/16 18:46:12 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/18 15:53:18 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 
 int			main(int argc, char **argv)
 {
-	tet		*tetlist;
-	tet		*startover;
+	t_tet		*tetlist;
+	t_tet		*startover;
 	char	**map; 
 	int		size;
 
 	size = 0;
-	tetlist = ft_memalloc(sizeof(tet));
+	tetlist = ft_memalloc(sizeof(t_tet));
 	map = NULL;
 	if (argc != 2) 
 	{	

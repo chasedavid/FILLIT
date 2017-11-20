@@ -6,13 +6,13 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 22:09:50 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/11 18:26:53 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/18 15:35:33 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-tet		*find_next_space(char **map, tet *tet, int size)
+t_tet		*find_next_space(char **map, t_tet *tet, int size)
 {
 	int 	row;
 	int 	col;
