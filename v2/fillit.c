@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 00:15:22 by aho               #+#    #+#             */
-/*   Updated: 2017/11/08 21:16:54 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/16 02:08:52 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 int fillit(char **map, t_list *piece, t_coord xy, int mapsize)
 {
-	//print piece
 	printf("\n--------- fillit() called---------- \n");
-	printf("piece->alpha: %c\n", piece->alpha);
-	printf("piece->content:\n%s\n", piece->content);
+//	printf("piece->alpha: %c\n", piece->alpha);
+//	printf("piece->content:\n%s\n", piece->content);
+
+
+
+
+
 
 
 //	xy = getnextxy(map, piece->content, mapsize);
