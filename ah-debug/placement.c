@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 02:18:13 by aho               #+#    #+#             */
-/*   Updated: 2017/11/18 02:10:16 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/21 00:07:34 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ int firstrowpieces(char *piece)
     return (pieces);
 }
 
-// probably some memory leak since print char *row is a really long string...
-int maprowavails(char *row, int size, coord xy)
+int maprowavails(char *row, int size, coord *xy)
 {
     int i;
 
@@ -38,92 +37,94 @@ int maprowavails(char *row, int size, coord xy)
 //	printf("maprowavail() row: %s \n\n", row);
     i = 0;
 // while (row[i] != '\0')
-    while (xy.y < size && row[i] == '.')
+    while (xy->y < size && row[i] == '.')
     {
 		i++;
-		xy.y++;
+		xy->y++;
     }
 //	printf("maprowavails: %d \n",i);
     return (i);
 }
 
 
-coord	getnextxy(char **map, tet *tetr, int size, coord xy)
+coord	*getnextxy(char **map, tet *tetr, int size, coord *xy)
 {
-	int	x; 
-	int y;
-
-	x = 0; 
-	y = 0;
-	
-	while (x < size) 
+	printf("-------- getnextxy() ------- \n");
+	printf("xy->x: %d, xy->y: %d \n", xy->x, xy->y);
+	while (xy->x < size) 
 	{
-		y = 0;
-        while (y < size && (maprowavails(map[x], size, xy) >= firstrowpieces(tetr->content)))
+		xy->y = 0;
+		while (xy->y < size && validmove(map, tetr, size, xy))
+//      while (xy->y < size && (maprowavails(map[x], size, xy) >= firstrowpieces(tetr->content)))
         {
 //          printf("x: %d  y: %d \n", x, y);
-            if (map[x][y] == '.')
+            if (map[xy->x][xy->y] == '.' && validmove(map, tetr, size, xy) == 1)
             {
-                xy.x = x;
-                xy.y = y;
-                return (xy);
+				printf(">> map[x][y] == '.' - before return - xy->x: %d, xy->y: %d \n", xy->x, xy->y);
+				return (xy);
             }
-            else if (map[x][y] != '.' && map[x][y] != 0)
-            {
-                y++;
-            }
-
+			else
+				xy->y++; 
         }
-        x++;
+        xy->x++;
 	}
-	printf("xy.x: %d, xy.y: %d \n", xy.x, xy.y);
+	printf(" before return - xy->x: %d, xy->y: %d \n", xy->x, xy->y);
     return (xy);
 }
 
 
-coord	skipxy(char **map, tet *tetr, int size, coord xy)
+coord	*skipxy(char **map, tet *tetr, int size, coord *xy)
 {
 	xy = getnextxy(map, tetr, size, xy);
-	while (xy.x < size) 
+	while (xy->x < size) 
 	{
-		printf("beginning of skipxy: xy.x: %d, xy.y: %d, size: %d \n", xy.x, xy.y, size);
+
+		printf("beginning of skipxy: xy->x: %d, xy->y: %d, size: %d \n", xy->x, xy->y, size);
 //		printf("tetr:\n %s \n", tetr->content);
-		printf("maprowavails: %d, tetr strlen: %zu \n", maprowavails(map[xy.x], size, xy), ft_strlen(tetr->content));
-//		if ((xy.y + 1) < size && (maprowavails(map[xy.x], size, xy) >= firstrowpieces(tetr->content)))
-		if (checkxy(map, tetr, size, xy) == 1)
+//		printf("maprowavails: %d, tetr strlen: %zu \n", maprowavails(map[xy->x], size, xy), ft_strlen(tetr->content));
+//		if ((xy->y + 1) < size && (maprowavails(map[xy->x], size, xy) >= firstrowpieces(tetr->content)))
+//		if (checkxy(map, tetr, size, xy) == 1)
+//			return (xy);
+		if (xy->y + 1 < size)
+		{
+			xy->y++;
 			return (xy);
-		else if (xy.y + 1 < size) 
-			xy.y++; 
+		}
 		else
 		{
-			xy.x++;
-			xy.y = 0;
-			printf("else new -  xy.x: %d, xy.y: %d \n", xy.x, xy.y);
+			xy->x++;
+			xy->y = 0;
+			return (xy);
+//			printf("else new -  xy->x: %d, xy->y: %d \n", xy->x, xy->y);
 		}
-		printf("testing xy.x: %d \n", xy.x);
+//		printf("testing xy->x: %d \n", xy->x);
 	}
-	printf("skipxy: xy.x: %d, xy.y: %d \n", xy.x, xy.y);
+	printf("inside skipxy return: xy->x: %d, xy->y: %d \n", xy->x, xy->y);
     return (xy);
 }
 
 
-int placetet(char **map, tet *tetr, int size, coord xy) //tet is validly placed
+int placetet(char **map, tet *tetr, int size, coord *xy) //tet is validly placed
 {
-	coord nextxy; 
-	nextxy = getnextxy(map, tetr, size, xy);
-	printf("nextxy.x: %d, nextxy.y: %d \n", nextxy.x, nextxy.y);
+//	coord nextxy; 
+//	nextxy = getnextxy(map, tetr, size, xy);
+	printf("inside placetet -- xy->x: %d, xy->y: %d \n", xy->x, xy->y);
 
-	if (validmove(map, tetr, size, nextxy) == 1) 
+	if (validmove(map, tetr, size, xy) == 1) 
 	{	
-		map = placexy(map, tetr, nextxy);
+		map = placexy(map, tetr, size, xy);
+		printmap(map,size);
 		return (1); 
 	}
-	else 
+	else
+	{		
 		return (-1);
+	}
+
 }
 
 
-int validmove(char **map, tet *tetr, int size, coord xy)
+int validmove(char **map, tet *tetr, int size, coord *xy)
 {
 	if (checkxy(map, tetr, size, xy) == 1) 
 		return (1);
@@ -133,10 +134,11 @@ int validmove(char **map, tet *tetr, int size, coord xy)
 
 
 
-int checkxy(char **map, tet *tetr, int size, coord xy)
+int checkxy(char **map, tet *tetr, int size, coord *xy)
 {
-//  printf("\n>>>>>>>>>>>>>>>>>>> checkxy() function <<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
-//  printf("piece:\n%s\n", piece);
+	printf("\n>>>>>>>>>>>>>>>>>>> checkxy() function <<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
+	printf("piece:\n%s\n", tetr->content);
+    printf("checkxy -- xy->x: %d , xy->x: %d \n", xy->x, xy->y);
     int x;
     int y;
     int setcol;
@@ -144,118 +146,89 @@ int checkxy(char **map, tet *tetr, int size, coord xy)
     int pieces;
 	char *piece;
 
-    x = xy.x;
-    y = xy.y;
+    x = xy->x;
+    y = xy->y;
     i = 0;
     pieces = 0;
     setcol = y;
 	piece = tetr->content;
-	printf("piece:\n%s\n", piece);
 
     while (piece[i] != '\0')
     {
-        //printf(">> inside checkxy - piece[%i]: %c // y: %i \n", i, piece[i], y);
-//      if (piece[i] == '#' && i == 0)
-//          setcol = y;
-
-        //for offset piece
-        if ((piece[i] == '.') && i == 0 && (y - 1 > 0))
+        if (piece[i] == '.')
         {
-//          printf(">> if loop 1:  piece[%i]: %c // y: %i \n", i, piece[i], y);
-            y = y - 1;
-            setcol = y;
+			printf(">> piece[%i]: %c // x: %i y: %i \n", i, piece[i], x, y);
             y++;
         }
-        if (piece[i] == '.' && i > 0)
+        if (piece[i] == '#' && map[x][y] == '.' && y < size && x < size)
         {
-//          printf(">> if loop 2:  piece[%i]: %c // y: %i \n", i, piece[i], y);
-            y++;
-        }
-
-//		printf("size: %d \n", size);
-//		printf(">> if loop 3:  piece[%i]: %c // map[%i][%i] // - char: %c \n", i, piece[i], x, y, map[x][y]);
-        if (piece[i] == '#' && map[x][y] == '.' && y < size)
-        {
-//			printf(">> if loop 3:  piece[%i]: %c // map[%i][%i] // - char: %c \n", i, piece[i], x, y, map[x][y]);
+			printf(">> piece[%i]: %c // x: %i y: %i \n", i, piece[i], x, y);
             y++;
             pieces++;
         }
-
-//		else
-//		{
-//			printf("return -1: out of bounds \n");
-//			return (-1);
-//		}
         if (piece[i] == '\n')
         {
-//          printf(">> if loop 4:  piece[%i]: %c // y: %i \n", i, piece[i], y);
             x++;
             y = setcol;
         }
-
-//		if piece
-
-        if (piece[i+1] == '\0' && pieces != 4)
-            return (-1);
         if (piece[i+1] == '\0' && pieces == 4)
-            return (1);
+		{
+			printf("checkxy return -- xy->x: %d , xy->x: %d \n", xy->x, xy->y);
+	        return (1);
+		}
         i++;
     }
-    return (-2);
+    return (-1);
 }
 
 
-char **placexy(char **map, tet *tetr, coord xy)
+char **placexy(char **map, tet *tetr, int size, coord *xy)
 {
+	printf("placexy -- xy->x: %d , xy->x: %d \n", xy->x, xy->y);
     int i;
-    int x;
-    int y;
     int pieces;
     int offset;
     int setcol;
 	char *piece;
 
     i = 0;
-    x = xy.x;
-    y = xy.y;
     pieces = 0;
     offset = 0;
 	piece = tetr->content;
-//  if (piece[0] != '#')
-//      return placexy_offset(map, piece, alpha, xy);
-
-//  else
-//  {
-    setcol = y;
+	setcol = xy->y;
     while (piece[i] != '\0')
     {
-//      printf("piece[%i]: %c \n", i, piece[i]);
+//		printf("piece[%i]: %c \n", i, piece[i]);
         if (piece[i] == '.')
         {
             if (pieces == 0)
                 offset++;
-            if (offset > 0 && piece[i + 1] == '#')
-                setcol = y - offset;
-            y++;
+//			    if (offset > 0 && piece[i + 1] == '#')
+//			setcol = xy->y + offset;
+            xy->y++;
         }
         if (piece[i] == '#')
         {
-            map[x][y] = tetr->alpha;
+            map[xy->x][xy->y] = tetr->alpha;
             pieces++;
-            y++;
+            xy->y++;
         }
         if (piece[i] == '\n')
         {
-            y = setcol;
-            x++;
+            xy->y = setcol;
+            xy->x++;
         }
 //      printf("piece: %s\n" , piece);
-//      printf("xy.x: %d\n" , xy.x);
-//      printf("xy.y: %d\n" , xy.y);
         if (piece[i + 1] == '\0')
+		{
+			printf("inside placexy - xy->x: %d , xy->y: %d \n", xy->x, xy->y);
             return (map);
+		}
         i++;
     }
 //  }
+	getnextxy(map, tetr, size, xy);
+
+	printf("inside placexy - xy->x: %d , xy->y: %d \n", xy->x, xy->y);
     return (map);
 }

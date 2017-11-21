@@ -6,7 +6,7 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:37:24 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/18 01:37:45 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/21 00:07:12 by aho              ###   ########.fr       */
 /*   Updated: 2017/11/16 18:44:36 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -52,14 +52,19 @@ char	*trimrows(char *str);
 char	*tetrim(char *str);
 
 //map placing functions 
-int		placetet(char **map, tet *tetr, int size, coord xy);
-coord   getnextxy(char **map, tet *tetr, int size, coord xy);
-coord   skipxy(char **map, tet *tetr, int size, coord xy);
-int		validmove(char **map, tet *tetr, int size, coord xy);
-int		checkxy(char **map, tet *tetr, int size, coord xy);
-char	**placexy(char **map, tet *tetr, coord xy);
+int		placetet(char **map, tet *tetr, int size, coord *xy);
+coord   *getnextxy(char **map, tet *tetr, int size, coord *xy);
+coord   *skipxy(char **map, tet *tetr, int size, coord *xy);
+int		validmove(char **map, tet *tetr, int size, coord *xy);
+int		checkxy(char **map, tet *tetr, int size, coord *xy);
+char	**placexy(char **map, tet *tetr, int size, coord *xy);
 int		firstrowpieces(char *piece);
-int		maprowavails(char *row, int size, coord xy);
+int		maprowavails(char *row, int size, coord *xy);
+char 	**removepiece(char **map, tet *tetr, int size, coord *xy);
+char 	**removelastalpha(char **map, int alpha, int size, coord *xy);
+
+
+
 
 //map functions
 char	**makemap(void);
@@ -73,7 +78,7 @@ int		ft_sqrt(int n);
 tet		*find_next_space(char **map, tet *tet, int size);
 void	ft_remove(char **map, tet *tet, int size);
 //void	fillit(char **map, tet *alst, int size, tet *startover);
-int		fillit(char **map, tet *alst, int size, coord xy);
+int		fillit(char **map, tet *alst, int size, coord *xy);
 
 int		ft_place_tet(char **map, tet *tet, int size);
 char	**ft_place_first(char **map, tet *tet, int size);

@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 00:15:08 by aho               #+#    #+#             */
-/*   Updated: 2017/11/17 03:04:41 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/20 23:40:14 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int			main(int argc, char **argv)
 
 	//ft_place_first(map, tetlist, size);
 //	fillit(ft_place_first(map, tetlist, size), tetlist->next, size, startover);
-	fillit(map, tetlist, size, xy);
+	fillit(map, tetlist, size, &xy);
 	
 	ft_putstr("\n----- final map result ------ \n");
 	ft_putnbr(size);

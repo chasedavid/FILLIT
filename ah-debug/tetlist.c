@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 01:00:29 by aho               #+#    #+#             */
-/*   Updated: 2017/11/17 01:49:35 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/20 23:50:54 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void 		ft_printtetlist(tet **alst)
         printf("current->alpha: %c \n", current->alpha);
         if (current->next == NULL)
             printf("current->next is NULL\n");
-        else
-            printf("current->next->content:\n%s\n", current->next->content);
+//        else
+		//           printf("current->next->content:\n%s\n", current->next->content);
         current = current->next;
         i++;
     }
