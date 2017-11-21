@@ -6,7 +6,7 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/03 14:42:26 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/20 09:34:15 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/21 08:13:34 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void		ft_remove(char	**map, t_tet *tet, int size)
 		k++;
 		if ((tet->content)[k] == '\n')
 		{
-			row++;
+			if (col != 0 )
+				row++;
 			col = tet->x;
 			k++;
 		}
@@ -70,19 +71,6 @@ int			ft_place_tet(char **map, t_tet *tet, int size)
 
 	while ((tet->content)[k] && col < size && row < size)
 	{
-		if (map[row][col] != '.' || (check_up_left(map, tet, row, col) != 1))
-		{
-			printf("IF CHECK: %d", map[row][col] != '.');
-			ft_remove(map, tet, size);
-			return (-1);
-		}
-		else
-		{
-			map[row][col] = (char)(tet->alpha);
-			col = MOVE_COL(col, size);
-			row = MOVE_ROW(row, col);
-			++k;
-		}
 		if ((tet->content)[k] == '.')
 		{
 			col = MOVE_COL(col, size);
@@ -94,6 +82,19 @@ int			ft_place_tet(char **map, t_tet *tet, int size)
 			if (col != 0)
 				++row;
 			col = tet->x;
+			++k;
+		}
+		if (map[row][col] != '.' || (check_up_left(map, tet, row, col) != 1))
+		{
+			printf("IF CHECK: %d", map[row][col] != '.');
+			ft_remove(map, tet, size);
+			return (-1);
+		}
+		else
+		{
+			map[row][col] = (char)(tet->alpha);
+			col = MOVE_COL(col, size);
+			row = MOVE_ROW(row, col);
 			++k;
 		}
 		printmap(map, size);
@@ -114,6 +115,12 @@ char		**ft_place_first(char **map, t_tet *tet, int size)
 	row = tet->y;
 	while ((tet->content)[k])
 	{
+		if ((tet->content)[k] == '.')
+		{
+			col = MOVE_COL(col, size);
+			row = MOVE_ROW(row, col);
+			++k;
+		}
 		map[row][col] = (char)(tet->alpha);
 		col = MOVE_COL(col, size);
 		row = MOVE_ROW(row, col);
@@ -124,12 +131,30 @@ char		**ft_place_first(char **map, t_tet *tet, int size)
 			col = tet->x;
 			++k;
 		}
-		if ((tet->content)[k] == '.')
-		{
-			col = MOVE_COL(col, size);
-			row = MOVE_ROW(row, col);
-			++k;
-		}
 	}
 	return (map);
 }
+
+/*
+int			place_on_map(char **map, t_tet tet, int size)
+{
+	int row;
+	int col;
+
+	row = 0;
+	while (row < size)
+	{
+		col = 0;
+		while (col < size)
+		{
+			if (place_tet(map, tet, size))
+				if (place_on_map(map, tet->next, int size))
+					return (1);
+				else
+					remove_tet(map, tet, size);
+			++col;
+		}
+		++row;
+	}
+	return (0);
+}*/
