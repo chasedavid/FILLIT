@@ -6,7 +6,7 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 22:03:14 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/11 16:12:37 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/22 10:58:46 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,27 @@
 	return (num);
  }
  */
+
+int		ft_width(char *s)
+{
+	int		i;
+
+	i = -1;
+	while(*s++ != '\n')
+		++i;
+	return (i);
+}
+
+int		ft_height(char *s)
+{
+	int		i;
+
+	i = -1;
+	while(*s)
+		if (*s++ == '\n')
+			++i;
+	return (i);
+}
 
 int		ft_sqrt(int n)
 {

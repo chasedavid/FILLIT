@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 00:14:44 by aho               #+#    #+#             */
-/*   Updated: 2017/11/18 15:41:11 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/22 22:49:04 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ int			readtetfile(char *argv, t_tet **list)
     {
         buf[ret] = '\0';
 		if (validchars(buf) == 1 && validhashes(buf) == 1 && alpha < 91)
+		{
             ft_tetappend(list, ft_tetnew(buf, (BUF_SIZE + 1), alpha++, tet_i++));
+		}
 		else
 		{
 			printf("invalid piece detected - see buf below:\n%s \n", buf);

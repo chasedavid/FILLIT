@@ -6,7 +6,7 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 11:14:09 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/14 16:51:00 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/22 23:53:13 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char		**makemap(void)
 	row = 0;
 	if (!(map = (char**)malloc((32 + 1) * sizeof(char*))))
 		return (NULL);
-	map[32 + 1] = 0;
+	map[32 ] = 0;
 	while (row < 32)
 	{
 		map[row] = ft_memalloc(32 + 1);

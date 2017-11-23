@@ -6,7 +6,7 @@
 #    By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:16:37 by cfarnswo          #+#    #+#              #
-#    Updated: 2017/11/15 21:31:14 by aho              ###   ########.fr        #
+#    Updated: 2017/11/22 11:41:57 by cfarnswo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,10 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra -g
 
-FILES =	placement	\
-		fillit		\
-		tetlist		\
-		move		\
+FILES =	tetlist		\
 		map			\
+		fillit		\
+		placement	\
 		readtetfile \
 		validate	\
 		trim		\

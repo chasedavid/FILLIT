@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:52:22 by aho               #+#    #+#             */
-/*   Updated: 2017/11/18 15:35:05 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/22 23:44:15 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char		*t_deletecol(char *str, int col, int n)
 	j = 0;
 	len = ft_strlen(str);
 	//malloc space for new string
-	if (!(trim = malloc(ft_strlen(str) - 4)))
+	if (!(trim = malloc(ft_strlen(str) - 1)))
 		return (NULL);
 	//iterate through and copy str to malloc
 	while (i < len)
@@ -142,6 +142,8 @@ void		trimpieces(t_tet *list)
     {
         if (current->content != NULL)
             current->content = tettrim(current->content);
-        current = current->next;
+		current->x = ft_width(current->content);
+		current->y = ft_height(current->content);
+		current = current->next;
     }
 }
