@@ -6,9 +6,10 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 22:38:22 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/23 23:06:08 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/24 00:24:32 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft/libft.h"
 #include "fillit.h"
 
@@ -17,5 +18,5 @@ char	*check_hash_num(char *s, int i)
 	while (s[i] != '\n')
 		++i;
 	s = ft_strsub_free(s, 0, i + 1);
-	return (s);	
+	return (s);
 }
