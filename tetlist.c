@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 01:00:29 by aho               #+#    #+#             */
-/*   Updated: 2017/11/23 18:21:35 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/23 19:54:43 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,26 @@
 #include "fillit.h"
 #include <stdio.h>
 
-t_tet			*ft_tetnew(void const *content, unsigned int content_size, int alpha, int lst_i)
+t_tet			*ft_tetnew(void *content, int tetsize, int alpha, int i)
 {
 	t_tet		*link;
 
-
 	if (!(link = ft_memalloc(sizeof(t_tet))))
 		return (NULL);
-	link->content = ft_memalloc(content_size);
-	ft_memcpy(link->content, content, content_size);
-	link->content_size = content_size;
+	link->content = ft_memalloc(tetsize);
+	ft_memcpy(link->content, content, tetsize);
+	link->content_size = tetsize;
 	link->alpha = alpha;
-	link->x = 0; 
-	link->y = 0; 
-	link->lst_i = lst_i;
+	link->x = 0;
+	link->y = 0;
+	link->lst_i = i;
 	link->next = NULL;
 	return (link);
 }
 
-void		ft_tetappend(t_tet **alst, t_tet *new)
+void			ft_tetappend(t_tet **alst, t_tet *new)
 {
-	t_tet	*current;
+	t_tet		*current;
 
 	current = (*(alst));
 	if (current->content == NULL)
@@ -48,10 +47,10 @@ void		ft_tetappend(t_tet **alst, t_tet *new)
 	}
 }
 
-void 		ft_printtetlist(t_tet **alst)
+void			ft_printtetlist(t_tet **alst)
 {
-	t_tet 	*current;
-	int 	i;
+	t_tet		*current;
+	int			i;
 
 	current = (*(alst));
 	i = 0;
@@ -71,7 +70,7 @@ void 		ft_printtetlist(t_tet **alst)
 	}
 }
 
-void		*ft_lstlastitem(t_tet **alst)
+void			*ft_lstlastitem(t_tet **alst)
 {
 	t_tet		*current;
 	t_tet		*last;
