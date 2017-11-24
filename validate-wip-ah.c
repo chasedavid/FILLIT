@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate.c                                         :+:      :+:    :+:   */
+/*   validate-wip-ah.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 12:26:45 by aho               #+#    #+#             */
-/*   Updated: 2017/11/23 23:24:22 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/24 00:51:48 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int			hashneighborcheck(char *buf, int i, int hashes)
 	return (-1);
 }
 
-int			hashchecks(char *buf, int hashes)
+int			hashchecks(char *buf, int *hashes, int *spaces)
 {
 	spaces = 4;
 	hashes++;
