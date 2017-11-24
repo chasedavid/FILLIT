@@ -6,11 +6,11 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 00:15:08 by aho               #+#    #+#             */
-/*   Updated: 2017/11/23 19:22:42 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/23 20:14:25 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h" 
+#include "libft/libft.h"
 #include "fillit.h"
 #include <stdio.h>
 
@@ -20,15 +20,14 @@ int				main(int argc, char **argv)
 	int			size;
 	t_map		*map;
 
-	if (argc != 2) 
-	{	
+	if (argc != 2)
+	{
 		ft_putstr("error\n");
 		return (-1);
 	}
 	tetlist = ft_memalloc(sizeof(t_tet));
-	map = NULL;
-	map->grid = NULL;
-	map->size = 0;
+	map.grid = NULL;
+	map.size = 0;
 	size = readtetfile(argv[1], &tetlist);
 	if (size == -1)
 	{
@@ -36,8 +35,8 @@ int				main(int argc, char **argv)
 		return (-1);
 	}
 	trimpieces(tetlist);
-	(map->grid) = makemap();
-	(map->size) = ft_sqrt(4 *size);
+	map.grid = makemap();
+	map.size = ft_sqrt(4 * size);
 	fillit(map, tetlist);
 	return (0);
 }
