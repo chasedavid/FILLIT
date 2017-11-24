@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 01:00:29 by aho               #+#    #+#             */
-/*   Updated: 2017/11/23 19:54:43 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/23 21:19:53 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,19 @@ void			*ft_lstlastitem(t_tet **alst)
 		current = current->next;
 	last = current;
 	return (last);
+}
+
+void			trimpieces(t_tet *list)
+{
+	t_tet		*current;
+
+	current = list;
+	while (current != NULL)
+	{
+		if (current->content != NULL)
+			current->content = tettrim(current->content);
+		current->x = ft_width(current->content);
+		current->y = ft_height(current->content);
+		current = current->next;
+	}
 }
