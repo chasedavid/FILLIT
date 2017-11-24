@@ -6,7 +6,7 @@
 #    By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:16:37 by cfarnswo          #+#    #+#              #
-#    Updated: 2017/11/23 21:38:08 by aho              ###   ########.fr        #
+#    Updated: 2017/11/24 00:52:12 by cfarnswo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ FILES =	tetlist			\
 		validatechars 	\
 		validate		\
 		trim			\
+		trim1			\
 		odd_fts			\
 
 SRC = $(addsuffix .c, $(FILES))
