@@ -6,7 +6,7 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/03 14:42:26 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/23 00:09:42 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/23 19:26:04 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-void		remove_tet(char	**map, t_tet *tet, int row, int col)
+void		remove_tet(t_map *map, t_tet *tet, int row, int col)
 {
 	int		y;
 	int		x;
@@ -22,93 +22,57 @@ void		remove_tet(char	**map, t_tet *tet, int row, int col)
 
 	y = row;
 	k = 0;
-
-	 while (y <= (row + tet->y))
-  	{
-		x = col;
-  		while (x <= (col + tet->x))
-  		{
-  			if (map[y][x] == (tet->alpha))
-  				map[y][x] = '.';
-  			++x;
-  		}
-  	++y;
-  	}
-/* 
-	while((tet->content)[k])
+	while (y <= (row + tet->y))
 	{
-		while ((tet->content)[k] == '.')
+		x = col;
+		while (x <= (col + tet->x))
 		{
-			x = ((++x > = size) ? col : x);
-			y = ((x == col) ? ++y : y);
-			++k;
+			if ((map->grid)[y][x] == (tet->alpha))
+				(map->grid)[y][x] = '.';
+			++x;
 		}
-		if (map[y][x] == tet->alpha)
-		{
-			map[y][x] = '.';
-			x = ((++x > = size) ? col : x);
-			y = ((x == col) ? ++y : y);
-			++k;
-		}
-		else
-		{
-			x = ((++x > = size) ? col : x);
-			y = ((x == col) ? ++y : y);
-			++k;
-		}
-		if ((tet->content)[k] == '\n')
-		{
-			++y;
-			x = col;
-			++k;
-		}
+		++y;
 	}
 }
-*/
-}
 
-
-
-int			place_tet(char **map, t_tet *tet, int size, int row, int col)
+int			place_tet(t_map *map, t_tet *tet, int row, int col)
 {
 	int		k;
 	int		y;
 	int		x;
 
 	y = row;
-	k = 0;
-	if (((row + tet->y) >= size) || ((col + tet->x) >= size))
+	k = -1;
+	if (((row + tet->y) >= map->size) || ((col + tet->x) >= map->size))
 		return (0);
 	while (y <= (row + tet->y))
 	{
 		x = col;
 		while (x <= (col + tet->x))
 		{
-			while ((tet->content)[k] != '\n')
+			while ((tet->content)[++k] != '\n')
 			{
 				if ((tet->content)[k] != '.')
 				{
-					if (map[y][x] != '.')
+					if ((map->grid)[y][x] != '.')
 					{
 						remove_tet(map, tet, row, col);
 						return (0);
 					}
-					if (map[y][x] == '.')
+					if ((map->grid)[y][x] == '.')
 					{
-						map[y][x] = tet->alpha;
+						(map->grid)[y][x] = tet->alpha;
 					}
 				}
 				++x;
-				++k;
 			}
-			++k;
 		}
 		++y;
 	}
 	return (1);
 }
 
-int			place_on_map(char **map, t_tet *tet, int size)
+int			place_on_map(t_map *map, t_tet *tet)
 {
 	int row;
 	int col;
@@ -116,14 +80,14 @@ int			place_on_map(char **map, t_tet *tet, int size)
 	if (tet == NULL)
 		return (1);
 	row = 0;
-	while (row < size)
+	while (row < map->size)
 	{
 		col = 0;
-		while (col < size)
+		while (col < map->size)
 		{
-			if (place_tet(map, tet, size, row, col))
+			if (place_tet(map, tet, row, col))
 			{
-				if (place_on_map(map, tet->next, size))
+				if (place_on_map(map, tet->next))
 					return (1);
 				remove_tet(map, tet, row, col);
 			}

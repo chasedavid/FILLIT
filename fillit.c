@@ -1,5 +1,4 @@
 /* ************************************************************************** */
-
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   fillit.c                                           :+:      :+:    :+:   */
@@ -7,7 +6,7 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 11:14:58 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/20 17:27:09 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/23 19:04:34 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +14,9 @@
 #include "fillit.h"
 #include <stdio.h>
 
-void	fillit(char **map, t_tet *tet, int size) 
+void	fillit(t_map *map, t_tet *tet)
 {
-	while(!(place_on_map(map, tet, size)))
-		++size;
-	printmap(map, size);
+	while (!(place_on_map(map, tet)))
+		++(map->size);
+	printmap((map->grid), (map->size));
 }

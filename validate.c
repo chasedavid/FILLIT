@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 12:26:45 by aho               #+#    #+#             */
-/*   Updated: 2017/11/16 00:16:11 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/23 18:22:39 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int         hashneighborcheck(char *buf, int i, int hashes)
 {
 	if (hashes > 2)
 		return (1);
-    if (hashrightcheck(buf, i) == 1) 
+	if (hashrightcheck(buf, i) == 1) 
 		return (1);
 	if (hashbelowcheck(buf, i) == 1)
 		return (1);
@@ -53,7 +53,7 @@ int			validchars(char *buf)
 	int dots; 
 	int hashes; 
 	int newlines; 
-	
+
 	i = 0;
 	dots = 0; 
 	hashes = 0; 
@@ -95,7 +95,7 @@ int			validhashes(char *buf)
 
 	i = 0; 
 	hashes = 0;
-//	printf("buf:\n%s \n", buf);
+	//	printf("buf:\n%s \n", buf);
 	while (buf[i] != '\0')
 	{
 		while (buf[i] != '#' && hashes == 0)
@@ -107,7 +107,7 @@ int			validhashes(char *buf)
 				return (-1);
 			}
 		}
-        if (buf[i] == '#' && hashneighborcheck(buf, i, hashes) == 1)
+		if (buf[i] == '#' && hashneighborcheck(buf, i, hashes) == 1)
 		{	
 			spaces = 4;
 			hashes++;
@@ -126,12 +126,12 @@ int			validhashes(char *buf)
 			}
 			spaces--;
 		}
-//		printf("hashneighborcheck result: %d, i: %d \n", hashneighborcheck(buf, i), i);
+		//		printf("hashneighborcheck result: %d, i: %d \n", hashneighborcheck(buf, i), i);
 		if (buf[i] == '#' && hashneighborcheck(buf, i, hashes) == -1)
 		{
 			printf("hashes: %d \n", hashes);
 			printf("error return: does not pass hashneighborcheck at buf[%i]: %c \n", i, buf[i]);
-            return (-1);
+			return (-1);
 		}
 		i++;
 	}

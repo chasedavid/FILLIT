@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lcm.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/23 18:23:22 by cfarnswo          #+#    #+#             */
+/*   Updated: 2017/11/23 18:23:35 by cfarnswo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 int	ft_lcm(unsigned int a, unsigned int b)
@@ -7,5 +19,5 @@ int	ft_lcm(unsigned int a, unsigned int b)
 	if (ft_gcf(a, b) == 0)
 		return (0);
 	lcm = (a * b) / ft_gcf(a, b);
-		return (lcm);
+	return (lcm);
 }

@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 01:00:29 by aho               #+#    #+#             */
-/*   Updated: 2017/11/18 15:51:16 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/23 18:21:35 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_tet			*ft_tetnew(void const *content, unsigned int content_size, int alpha, in
 void		ft_tetappend(t_tet **alst, t_tet *new)
 {
 	t_tet	*current;
-	
+
 	current = (*(alst));
 	if (current->content == NULL)
 		*alst = new;
@@ -50,35 +50,35 @@ void		ft_tetappend(t_tet **alst, t_tet *new)
 
 void 		ft_printtetlist(t_tet **alst)
 {
-    t_tet 	*current;
-    int 	i;
+	t_tet 	*current;
+	int 	i;
 
-    current = (*(alst));
-    i = 0;
-    while (current != NULL)
-    {
-        printf("-----------------\n");
-        printf("Linked List: %d\n", i);
-        printf("-----------------\n");
-        printf("current->content:\n%s\n", current->content);
-        printf("current->alpha: %c \n", current->alpha);
-        if (current->next == NULL)
-            printf("current->next is NULL\n");
-        else
-            printf("current->next->content:\n%s \n", current->next->content);
-        current = current->next;
-        i++;
-    }
+	current = (*(alst));
+	i = 0;
+	while (current != NULL)
+	{
+		printf("-----------------\n");
+		printf("Linked List: %d\n", i);
+		printf("-----------------\n");
+		printf("current->content:\n%s\n", current->content);
+		printf("current->alpha: %c \n", current->alpha);
+		if (current->next == NULL)
+			printf("current->next is NULL\n");
+		else
+			printf("current->next->content:\n%s \n", current->next->content);
+		current = current->next;
+		i++;
+	}
 }
 
 void		*ft_lstlastitem(t_tet **alst)
 {
-    t_tet		*current;
-    t_tet		*last;
+	t_tet		*current;
+	t_tet		*last;
 
-    current = (*(alst));
-    while (current->next != NULL)
-        current = current->next;
-    last = current;
-    return (last);
+	current = (*(alst));
+	while (current->next != NULL)
+		current = current->next;
+	last = current;
+	return (last);
 }
