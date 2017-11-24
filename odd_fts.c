@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_width(char *s)
+int			ft_width(char *s)
 {
 	int		i;
 
@@ -20,7 +20,7 @@ int		ft_width(char *s)
 	return (i);
 }
 
-int		ft_height(char *s)
+int			ft_height(char *s)
 {
 	int		i;
 
@@ -31,7 +31,7 @@ int		ft_height(char *s)
 	return (i);
 }
 
-int		ft_sqrt(int n)
+int			ft_sqrt(int n)
 {
 	int		i;
 

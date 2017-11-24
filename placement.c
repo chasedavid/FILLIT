@@ -6,7 +6,7 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/03 14:42:26 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/23 19:26:04 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/23 22:18:36 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,41 +41,31 @@ int			place_tet(t_map *map, t_tet *tet, int row, int col)
 	int		y;
 	int		x;
 
-	y = row;
+	y = row - 1;
 	k = -1;
 	if (((row + tet->y) >= map->size) || ((col + tet->x) >= map->size))
 		return (0);
-	while (y <= (row + tet->y))
+	while (++y <= (row + tet->y))
 	{
-		x = col;
-		while (x <= (col + tet->x))
+		x = col - 1;
+		while ((tet->content)[++k] != '\n' && ++x <= (col + tet->x))
 		{
-			while ((tet->content)[++k] != '\n')
+			if ((tet->content)[k] != '.' && (map->grid)[y][x] != '.')
 			{
-				if ((tet->content)[k] != '.')
-				{
-					if ((map->grid)[y][x] != '.')
-					{
-						remove_tet(map, tet, row, col);
-						return (0);
-					}
-					if ((map->grid)[y][x] == '.')
-					{
-						(map->grid)[y][x] = tet->alpha;
-					}
-				}
-				++x;
+				remove_tet(map, tet, row, col);
+				return (0);
 			}
+			else if ((tet->content)[k] != '.')
+				(map->grid)[y][x] = tet->alpha;
 		}
-		++y;
 	}
 	return (1);
 }
 
 int			place_on_map(t_map *map, t_tet *tet)
 {
-	int row;
-	int col;
+	int		row;
+	int		col;
 
 	if (tet == NULL)
 		return (1);
