@@ -6,7 +6,7 @@
 #    By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:16:37 by cfarnswo          #+#    #+#              #
-#    Updated: 2017/11/22 11:41:57 by cfarnswo         ###   ########.fr        #
+#    Updated: 2017/11/23 21:38:08 by aho              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,15 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra -g
 
-FILES =	tetlist		\
-		map			\
-		fillit		\
-		placement	\
-		readtetfile \
-		validate	\
-		trim		\
-		odd_fts		\
+FILES =	tetlist			\
+		map				\
+		fillit			\
+		placement		\
+		readtetfile 	\
+		validatechars 	\
+		validate		\
+		trim			\
+		odd_fts			\
 
 SRC = $(addsuffix .c, $(FILES))
 OBJ = $(addsuffix .o, $(FILES))
