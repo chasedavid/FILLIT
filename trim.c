@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:52:22 by aho               #+#    #+#             */
-/*   Updated: 2017/11/23 21:26:49 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/24 00:20:19 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,37 +28,26 @@ char			*trimrows(char *str)
 {
 	int			spaces;
 	int			hashes;
-	int			len;
 	int			i;
 
 	spaces = 0;
 	hashes = 0;
-	len = ft_strlen(str);
-	i = 0;
-	while (str[i] != '\0')
+	i = -1;
+	while (str[++i] != '\0')
 	{
-		if (str[i] == '.')
-			spaces++;
+		spaces += (str[i] == '.') ? 1 : 0;
 		if (spaces == 4 && hashes == 0)
 		{
-			len = len - 4;
-			str = ft_strsub_free(str, i + 2, len);
+			str = ft_strsub_free(str, i + 2, ft_strlen(str) - 4);
 			spaces = 0;
 			i = -1;
 		}
 		if (str[i] == '#')
-		{
 			spaces = 0;
-			hashes++;
-		}
+		if (str[i] == '#')
+			++hashes;
 		if (hashes == 4)
-		{
-			while (str[i] != '\n')
-				i++;
-			str = ft_strsub_free(str, 0, i + 1);
-			return (str);
-		}
-		i++;
+			return (check_hash_num(str, i));
 	}
 	return (str);
 }
@@ -105,18 +94,12 @@ char			*trimcols(char *str)
 		len = (int)ft_strlen(str);
 		while (i < len)
 		{
-			if (str[i] == '#')
-				indicator++;
+			indicator += ((str[i] == '#') ? 1 : 0);
 			i += n;
 		}
 		if (indicator == 0)
-		{
-			str = t_deletecol(str, col, n);
-			n--;
-			i = col - 1;
-		}
-		else
-			i = col;
+			str = t_deletecol(str, col, n--);
+		i = ((indicator == 0) ? col - 1 : col);
 	}
 	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:37:24 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/23 20:11:25 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/23 23:36:20 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void				ft_printtetlist(t_tet **alst);
 int					validhashes(char *buf);
 int					validchars(char *buf);
 char				*ft_strsub_free(char *str, int col, int n);
+char				*check_hash_num(char *s, int i);
 void				trimpieces(t_tet *list);
 char				*tettrim(char *str);
 char				*t_deletecol(char *str, int col, int n);
