@@ -6,26 +6,16 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 22:03:14 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/22 10:58:46 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/23 21:34:23 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
- int	ft_lstsize(t_list *last)
- {
-	int		num;
-
-	num = (last->alpha) - 64;
-	return (num);
- }
- */
 
 int		ft_width(char *s)
 {
 	int		i;
 
 	i = -1;
-	while(*s++ != '\n')
+	while (*s++ != '\n')
 		++i;
 	return (i);
 }
@@ -35,7 +25,7 @@ int		ft_height(char *s)
 	int		i;
 
 	i = -1;
-	while(*s)
+	while (*s)
 		if (*s++ == '\n')
 			++i;
 	return (i);
