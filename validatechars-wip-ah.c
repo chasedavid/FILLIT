@@ -6,7 +6,7 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 23:17:35 by aho               #+#    #+#             */
-/*   Updated: 2017/11/24 00:37:18 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/25 21:47:50 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ int			validchars(char *buf)
 	{
 		if (checkchars(buf[i]) == -1 || dots > 12 || hashes > 4 || newlines > 4)
 			return (-1);
-//		if (dots > 12 || hashes > 4 || newlines > 4)
-//			return (-1);
 		if (buf[i] == '.')
 			dots++;
 		if (buf[i] == '#')
