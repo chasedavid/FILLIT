@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate.c                                         :+:      :+:    :+:   */
+/*   validate2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/15 12:26:45 by aho               #+#    #+#             */
-/*   Updated: 2017/11/25 22:16:48 by aho              ###   ########.fr       */
+/*   Created: 2017/11/25 22:41:43 by aho               #+#    #+#             */
+/*   Updated: 2017/11/25 22:42:00 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
-#include <stdio.h>
 
 int			neighborhash(char *buf, int i)
 {
@@ -21,9 +20,9 @@ int			neighborhash(char *buf, int i)
 	if (buf[i + 1] == '#' || buf[i + 5] == '#')
 	{
 		++counter;
-		if (buf[i + 1] == '#' && buf[i + 5] == '#') 
+		if (buf[i + 1] == '#' && buf[i + 5] == '#')
 			if (buf[i + 6] != '#')
-				++counter; 
+				++counter;
 	}
 	return (counter);
 }
@@ -39,7 +38,7 @@ int			validhashes(char *buf)
 	counter = 0;
 	while (buf[i] != '\0')
 	{
-		while (hashes == 0  && buf[i] != '#')
+		while (hashes == 0 && buf[i] != '#')
 		{
 			++i;
 			if (buf[i] == '\0')
@@ -52,6 +51,5 @@ int			validhashes(char *buf)
 		}
 		++i;
 	}
-//	printf("%d:\n%d:\n", hashes, counter);
 	return ((hashes != 4 || counter != 3) ? -1 : 1);
 }

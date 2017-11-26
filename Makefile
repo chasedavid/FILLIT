@@ -6,7 +6,7 @@
 #    By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:16:37 by cfarnswo          #+#    #+#              #
-#    Updated: 2017/11/25 21:51:16 by aho              ###   ########.fr        #
+#    Updated: 2017/11/25 22:37:32 by aho              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ FILES =	tetlist			\
 		fillit			\
 		placement		\
 		readtetfile 	\
-		validatechars-wip-ah	\
-		validate		\
+		validate1		\
+		validate2		\
 		trim			\
 		trim1			\
 		odd_fts			\
