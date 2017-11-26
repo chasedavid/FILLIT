@@ -6,7 +6,7 @@
 #    By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:16:37 by cfarnswo          #+#    #+#              #
-#    Updated: 2017/11/25 22:37:32 by aho              ###   ########.fr        #
+#    Updated: 2017/11/25 22:48:34 by aho              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = fillit
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 
 FILES =	tetlist			\
 		map				\
@@ -44,7 +44,5 @@ clean:
 fclean: clean
 	@make -C libft/ fclean
 	@/bin/rm -f $(NAME)
-	@/bin/rm -f *.c~ *.h~ *.txt~ Makefile~
-	@/bin/rm -rf *.dSYM
 
 re: fclean all
