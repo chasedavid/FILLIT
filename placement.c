@@ -6,13 +6,12 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/03 14:42:26 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/23 22:18:36 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/27 18:13:03 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
-#include <stdio.h>
 
 void		remove_tet(t_map *map, t_tet *tet, int row, int col)
 {

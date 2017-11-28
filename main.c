@@ -6,13 +6,12 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 00:15:08 by aho               #+#    #+#             */
-/*   Updated: 2017/11/23 20:23:30 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/27 18:12:22 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "fillit.h"
-#include <stdio.h>
 
 int				main(int argc, char **argv)
 {
