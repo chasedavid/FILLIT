@@ -6,11 +6,10 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 16:52:22 by aho               #+#    #+#             */
-/*   Updated: 2017/11/24 00:20:19 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/28 14:07:12 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "fillit.h"
 
 char			*ft_strsub_free(char *str, int col, int n)

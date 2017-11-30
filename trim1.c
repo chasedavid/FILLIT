@@ -6,11 +6,10 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 22:38:22 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/24 00:24:32 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/28 14:07:30 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "fillit.h"
 
 char	*check_hash_num(char *s, int i)

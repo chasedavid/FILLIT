@@ -6,11 +6,10 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 01:00:29 by aho               #+#    #+#             */
-/*   Updated: 2017/11/25 22:36:08 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/28 14:06:58 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "fillit.h"
 
 t_tet			*ft_tetnew(void *content, int tetsize, int alpha, int i)

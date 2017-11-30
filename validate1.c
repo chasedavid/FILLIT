@@ -6,11 +6,11 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/25 22:37:17 by aho               #+#    #+#             */
-/*   Updated: 2017/11/25 22:37:18 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/28 14:07:51 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "fillit.h"
 
 int			checkchars(char c)
 {

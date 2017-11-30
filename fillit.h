@@ -6,12 +6,18 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:37:24 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/23 23:36:20 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/28 14:06:08 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _FILLIT_H
 # define _FILLIT_H
+
+# include "libft/libft.h"
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# define BUFF_SIZE 20
 
 typedef struct		s_tet
 {

@@ -6,11 +6,11 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/25 22:41:43 by aho               #+#    #+#             */
-/*   Updated: 2017/11/25 22:42:00 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/28 14:08:05 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "fillit.h"
 
 int			neighborhash(char *buf, int i)
 {

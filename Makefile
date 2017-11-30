@@ -6,7 +6,7 @@
 #    By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 14:16:37 by cfarnswo          #+#    #+#              #
-#    Updated: 2017/11/25 22:48:34 by aho              ###   ########.fr        #
+#    Updated: 2017/11/29 17:06:13 by cfarnswo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ all: $(NAME)
 $(NAME):
 	@make -C libft/ re
 	@$(CC) $(CFLAGS) -c $(SRC) -I libft/
-	@$(CC) $(CFLAGS) -o $(NAME) main.c $(OBJ) -L libft/ -lft
+	@$(CC) $(CFLAGS) -o $(NAME) -I libft/ main.c $(OBJ) -L libft/ -lft
 
 clean:
 	@make -C libft/ fclean

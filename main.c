@@ -6,11 +6,10 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 00:15:08 by aho               #+#    #+#             */
-/*   Updated: 2017/11/27 18:12:22 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/28 13:57:31 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "fillit.h"
 
 int				main(int argc, char **argv)

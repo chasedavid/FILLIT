@@ -6,21 +6,17 @@
 /*   By: aho <aho@student.42.us.org>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 00:14:44 by aho               #+#    #+#             */
-/*   Updated: 2017/11/27 18:25:40 by aho              ###   ########.fr       */
+/*   Updated: 2017/11/28 14:21:53 by cfarnswo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "fillit.h"
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 
 int			readtetfile(char *argv, t_tet **list)
 {
 	int		fd;
 	int		ret;
-	char	*buf;
+	char	buf[BUF_SIZE];
 	int		alpha;
 	int		i;
 
@@ -28,11 +24,11 @@ int			readtetfile(char *argv, t_tet **list)
 	i = 0;
 	if ((fd = open(argv, O_RDONLY)) < 0)
 		return (-1);
-	buf = ft_strnew(21);
-	while ((ret = read(fd, buf, 20)))
+	ft_strclr(buf);
+	while ((ret = read(fd, buf, BUF_SIZE)))
 	{
 		if (validchars(buf) == 1 && validhashes(buf) == 1 && alpha < 91)
-			ft_tetappend(list, ft_tetnew(buf, 21, alpha++, i++));
+			ft_tetappend(list, ft_tetnew(buf, (BUF_SIZE + 1), alpha++, i++));
 		else
 			return (-1);
 		ft_strclr(buf);
