@@ -6,7 +6,7 @@
 /*   By: cfarnswo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 15:37:24 by cfarnswo          #+#    #+#             */
-/*   Updated: 2017/11/28 14:06:08 by cfarnswo         ###   ########.fr       */
+/*   Updated: 2017/11/29 17:21:13 by aho              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# define BUFF_SIZE 20
+# define BUF_SIZE 20
 
 typedef struct		s_tet
 {
